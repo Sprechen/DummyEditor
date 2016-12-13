@@ -1,0 +1,64 @@
+<form ng-controller="carouselSettingsController">
+
+    <div class="panel-heading">{{'carousel.editdata' | translate}}:</div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" ng-repeat="img in item.data track by $index">
+            <div class="panel-heading" role="tab" id="heading-{{$index}}">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$index}}" aria-expanded="true" aria-controls="collapse-{{$index}}">
+                        {{'carousel.image' | translate}} #{{($index+1)}}
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse-{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{$index}}">
+                <div class="panel-body">
+                    <div class="dummy-editor-form-group">
+                        <label for="url">{{'carousel.url' | translate}}:</label>
+                        <div class="input-block-level">
+                          <input id="url" type="text" class="dummy-editor-form-control" placeholder="{{'carousel.url' | translate}}" ng-model="img.url">
+                        </div>
+                    </div>
+                    <div class="dummy-editor-form-group">
+                        <label for="alt">{{'carousel.alt' | translate}}:</label>
+                        <div class="input-block-level">
+                          <input id="alt" type="text" class="dummy-editor-form-control" placeholder="{{'carousel.alt' | translate}}" ng-model="img.alt">
+                        </div>
+                    </div>
+                    <div class="dummy-editor-form-group">
+                        <label for="text_h2">{{'carousel.text_h2' | translate}}:</label>
+                        <div class="input-block-level">
+                          <input id="text_h2" type="text" class="dummy-editor-form-control" placeholder="{{'carousel.text_h2' | translate}}" ng-model="img.text_h2">
+                        </div>
+                    </div>
+                    <div class="dummy-editor-form-group">
+                        <label for="text_small">{{'carousel.text_small' | translate}}:</label>
+                        <div class="input-block-level">
+                          <input id="text_small" type="text" class="dummy-editor-form-control" placeholder="{{'carousel.text_small' | translate}}" ng-model="img.text_small">
+                        </div>
+                    </div>
+
+                    <div class="dummy-editor-form-group">
+                        <button class="pull-right dummy-btn dummy-btn-danger" ng-click="removeImg()">{{'carousel.removeimg' | translate}}</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="dummy-btn dummy-btn-success" ng-click="addImg()">{{'carousel.addimg' | translate}}</button>
+
+    <div class="dummy-editor-form-group">
+        <label for="height">{{'carousel.height' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="height" placeholder="{{'carousel.height' | translate }}" ng-model="item.height">
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="interval">{{'carousel.interval' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="interval" placeholder="{{'carousel.interval' | translate }}" ng-model="item.interval">
+    </div>
+    <div class="checkbox">
+        <label for="showControllers">
+            <input id="showControllers" type="checkbox" ng-model="item.showControllers">
+            {{'carousel.showcontrollers' | translate}}
+        </label>
+    </div>
+</form>

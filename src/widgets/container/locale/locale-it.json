@@ -1,0 +1,27 @@
+{
+    "container": {
+        "name": "Contenitore",
+        "type": "Tipo",
+        "div": "DIV",
+        "header": "HEADER",
+        "section": "SECTION",
+        "article": "ARTICLE",
+        "main": "MAIN",
+        "summary": "SUMMARY",
+        "aside": "ASIDE",
+        "footer": "FOOTER",
+        "bgcolor": "Colore di sfondo",
+        "bgimage": "Immagine di sfondo",
+        "color": "Colore",
+        "textalign": "Allinea testo",
+        "left": "Sinistra",
+        "center": "Centro",
+        "right": "Destra",
+        "custom_id": "Custom Id",
+        "textcolor": "Colore testo",
+        "padding": "Padding",
+        "top": "Sopra",
+        "bottom": "Sotto",
+        "size": "Dimensione"
+    }
+}

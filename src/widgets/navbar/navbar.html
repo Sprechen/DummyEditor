@@ -1,0 +1,41 @@
+<nav class="navbar {{item.navbarStyle}} {{item.customClassesPrintable}}">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-{{item.id}}" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="{{item.brand.url}}">
+                <span><img ng-if="item.brand.img" alt="{{item.brand.imgText}}" ng-src="{{item.brand.img}}" style="margin-top:-5px; height: 30px;"></span>
+                {{item.brand.text}}
+            </a>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="navbar-{{item.id}}">
+            <!--<ul class="nav navbar-nav">
+                <li ng-repeat="element in item.menu track by $index" ng-class="element.active?'active':''">
+                    <a href="{{element.url}}">{{element.title}}</a>
+                </li>
+            </ul>-->
+
+
+            <ul class="nav navbar-nav" ng-class="item.menuRight?'navbar-right':'navbar-left'">
+                <li ng-repeat="element in item.menu track by $index" ng-class="{'active': element.active, 'dropdown': element.type=='dropdown'}">
+                    <a ng-if="element.type!='dropdown'" href="{{element.url}}">{{element.title}}</a>
+                    <a ng-if="element.type=='dropdown'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="{{element.url}}">{{element.title}} <span class="caret"></span></a>
+                    <ul ng-if="element.type=='dropdown'" class="dropdown-menu">
+                        <li ng-repeat="d in element.data track by $index">
+                            <a href="{{d.url}}">{{d.title}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>

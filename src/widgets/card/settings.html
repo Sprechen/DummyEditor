@@ -1,0 +1,87 @@
+<form ng-controller="cardSettingsController">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="dummy-editor-form-group">
+                <label for="elevation">{{'card.elevation' | translate}}:</label>
+                <select id="elevation" class="dummy-editor-form-control" ng-model="item.elevation">
+                    <option ng-repeat="e in ['0','1','2','3','4','5']" value='{{e}}'>{{'card.elevation-'+e | translate}}</option>
+                </select>
+            </div>
+            <div class="dummy-editor-form-group">
+                <label for="border-radius">{{'card.border-radius' | translate}}:</label>
+                <input type="text" class="dummy-editor-form-control" id="border-radius" placeholder="{{'card.border-radius' | translate }}" ng-model="item.borderRadius">
+            </div>
+            <div class="dummy-editor-form-group">
+                <label for="bgcolor">{{'card.bgcolor' | translate}}:</label>
+                <div class="input-group">
+                  <div class="input-group-addon">#</div>
+                  <input type="text" class="dummy-editor-form-control" id="bgcolor" placeholder="{{'card.color' | translate }}" ng-model="item.background">
+                  <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
+                </div>
+            </div>
+            <div class="dummy-editor-form-group">
+                <label>{{'card.padding' | translate}}:</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-down-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.paddingtop">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-right-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.paddingleft">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-left-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.paddingright">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-up-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.paddingbottom">
+                </div>
+            </div>
+            <div class="dummy-editor-form-group">
+                <label>{{'card.margin' | translate}}:</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-down-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.margintop">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-right-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.marginleft">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-left-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.marginright">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="icon-up-big"></i></div>
+                  <input type="text" class="dummy-editor-form-control" placeholder="{{'card.size' | translate }}" ng-model="item.marginbottom">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-example-wrapper">
+                <div class="card-example" style="{{options[item.elevation]}} border-radius:{{item.borderRadius}};
+                margin-top: {{item.margintop}}; margin-left: {{item.marginleft}};
+                margin-right: {{item.marginright}}; margin-bottom: {{item.marginbottom}};
+                padding-top: {{item.paddingtop}}; padding-left: {{item.paddingleft}};
+                padding-right: {{item.paddingright}}; padding-bottom: {{item.paddingbottom}};
+                background: #{{item.background}};">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<style>
+    .card-example {
+        height: 200px;
+        left: 10px;
+        right: 10px;
+        top: 0px;
+        bottom: 0px;
+        position: absolute;
+        <!---webkit-box-shadow: {{_item.horizontalLength}}px {{_item.verticalLength}}px {{_item.blurRadious}}px {{_item.spreadRadious}}px rgba(0,0,0,0.48);
+        -moz-box-shadow: {{_item.horizontalLength}}px {{_item.verticalLength}}px {{_item.blurRadious}}px {{_item.spreadRadious}}px rgba(0,0,0,0.48);
+        box-shadow: {{_item.horizontalLength}}px {{_item.verticalLength}}px {{_item.blurRadious}}px {{_item.spreadRadious}}px rgba(0,0,0,0.48);-->
+    }
+</style>

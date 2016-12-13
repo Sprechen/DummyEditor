@@ -1,0 +1,16 @@
+{
+    "carousel": {
+        "name": "Carousel",
+        "editdata": "Edit Images",
+        "image": "Image",
+        "url": "URL",
+        "alt": "Alternative text",
+        "text_h2": "Caption Header",
+        "text_small": "Caption Subtext",
+        "removeimg": "Remove Image",
+        "addimg": "Add Image",
+        "height": "Images height",
+        "interval": "Interval between images (ms)",
+        "showcontrollers": "Show controllers"
+    }
+}

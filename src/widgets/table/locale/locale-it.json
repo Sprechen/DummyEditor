@@ -1,0 +1,17 @@
+{
+    "table": {
+        "name": "Tabella",
+        "style": "Stile",
+        "striped": "A Strisce",
+        "bordered": "Bordata",
+        "hovered": "Hovered",
+        "condensed": "Condensata",
+        "header": "Intestazione",
+        "showheader": "Mostral l'intestazione della tabella",
+        "edit": "Modifica",
+        "actions": "Azioni",
+        "addrow": "Aggiungi Riga",
+        "addcolumn": "Aggiungi Colonna",
+        "columnname": "Nome colonna"
+    }
+}

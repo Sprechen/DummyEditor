@@ -1,0 +1,5 @@
+<div class="container-element row {{item.customClassesPrintable}}">
+    <div ng-repeat="list in item.columns"
+        class="col-md-{{item.grid.colmd[$index]}} col-xs-{{item.grid.colxs[$index]}}" ng-include="'list.html'">
+    </div>
+</div>

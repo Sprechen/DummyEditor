@@ -1,0 +1,19 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="method">{{'form.method' | translate}}:</label>
+        <select class="dummy-editor-form-control" ng-model="item.method">
+            <option value='get'>{{'form.get' | translate}}</option>
+            <option value='post'>{{'form.post' | translate}}</option>
+        </select>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="action">{{'form.action' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="action" placeholder="{{'form.action' | translate }}" ng-model="item.action">
+    </div>
+    <div class="checkbox">
+        <label for="inline">
+            <input id="inline" type="checkbox" ng-model="item.inline">
+            {{'form.inline' | translate}}
+        </label>
+    </div>
+</form>

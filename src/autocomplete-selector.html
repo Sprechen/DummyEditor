@@ -1,0 +1,52 @@
+<div ng-controller="autocompleteSelectorController">
+    <div class="input-group">
+        <input ng-blur="closeDropdown($event)" type="text" class="form-control" ng-model="ngModel[key]" ng-focus="openDropdown()">
+        <div class="input-group-addon"><a href="#" ng-click="toggleDropdown()"><span class="caret"></span></a></div>
+        <ul id="as-dropdown-{{id}}" class="as-dropdown">
+            <li ng-repeat="el in values | filter:ngModel[key]">
+                <a id="dropdown_value-{{el[valueName]}}" data-value="{{el[valueName]}}" href="#" ng-click="setValue(el[valueName])">{{el[valueName]}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<style>
+    .as-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+
+    .as-dropdown>li>a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: 400;
+        line-height: 1.42857143;
+        color: #333;
+        white-space: nowrap;
+    }
+    .as-dropdown>li>a:hover {
+        background-color: #33658a;
+        color: white;
+        text-decoration: none;
+    }
+</style>

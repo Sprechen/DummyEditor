@@ -1,0 +1,18 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="title">{{'triplets.title' | translate}}:</label>
+        <input id="title" type="text" ng-model="item.title" />
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="bgcolor">{{'triplets.bgcolor' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="form-control" id="bgcolor" placeholder="{{'container.color' | translate }}" ng-model="item.background">
+          <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="text">{{'triplets.text' | translate}}:</label>
+        <input id="text" type="text" ng-model="item.text" />
+    </div>
+</form>

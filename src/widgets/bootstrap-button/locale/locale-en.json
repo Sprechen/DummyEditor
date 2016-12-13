@@ -1,0 +1,20 @@
+{
+    "bootstrapbutton": {
+        "name": "Button",
+        "text": "Button text",
+        "bclass": "Type",
+        "default": "Default",
+        "primary": "Primary",
+        "success": "Success",
+        "info": "Info",
+        "warning": "Warning",
+        "danger": "Danger",
+        "link": "Link",
+        "url": "Url",
+        "bsize": "Button Size",
+        "large": "Large",
+        "small": "Small",
+        "extrasmall": "Extra Small"
+
+    }
+}

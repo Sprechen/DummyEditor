@@ -1,0 +1,189 @@
+<div ng-controller="NestedListsDemoController" class="dummy-editor">
+    <!-- Markup for lists inside the dropzone. It's inside a seperate template
+     because it will be used recursively. The dnd-list directive enables
+     to drop elements into the referenced array. The dnd-draggable directive
+     makes an element draggable and will transfer the object that was
+     assigned to it. If an element was dragged away, you have to remove
+     it from the original list yourself using the dnd-moved attribute -->
+    <script type="text/ng-template" id="list.html">
+        <ul dnd-list="list" ng-init="myList=item" dnd-inserted="addedElement(item, myList)">
+            <li ng-repeat="item in list" class="dropli" dnd-draggable="item" dnd-effect-allowed="move" dnd-moved="performMove(list, $index)" ng-class="{selected: models.selected === item}" ng-mouseenter="mouseEnter(item)" ng-mouseleave="mouseExit(item)">
+                <div>
+                    <div ng-include="baseUrl + item.type + '/' + item.type + '.html'"></div>
+                    <element-info></element-info>
+                </div>
+            </li>
+            <li class="dndPlaceholder"></li>
+        </ul>
+    </script>
+
+    <!--
+<div id="dxy" style="position:absolute; left: 0px; bottom: 0px; width:150px; z-index: 16777271;">
+    <nav class="navbar-v navbar-inverse">
+        <div style="height:30px; cursor:move;" id="move"></div>
+        <div class="navbar-header navbar-header-v">
+            <center>
+        <button type="button" class="dummy-btn dummy-btn-primary" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+    </center>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'elements' | translate }} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li ng-repeat="item in models.templates" ng-click="add(item)">
+                      <a href="#">{{getWidget(item.type).name | translate}}</a>
+                  </li>
+              </ul>
+            </li>
+            <li>
+                <a href="#" dnd-list="[]">{{'dropToDelete' | translate}}</a>
+            </li>
+          </ul>
+
+
+
+      </div>
+      <div style="height:30px; cursor:move;" id="move2"></div>
+    </nav>
+</div>
+-->
+
+    <!-- Main area with dropzones and source code -->
+    <div class="col-md-12 edit-area">
+        <div class="row">
+            <div ng-repeat="(zone, list) in models.dropzones" class="col-md-12 no-margin-padding">
+                <div class="dropzone">
+                    <div ng-include="'list.html'"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="dummy-bar">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="dummy-dropup">
+                    <a href="#" class="dropdown-toggle dummy-element" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'containers' | translate }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dummy-dropdown-menu columns">
+                        <li ng-repeat="item in models.containers" ng-click="add(item)">
+                            <a href="#" class="dummy-element">{{getWidget(item.type).name | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dummy-dropup">
+                    <a href="#" class="dropdown-toggle dummy-element" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'elements' | translate }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dummy-dropdown-menu columns">
+                        <li ng-repeat="item in models.elements" ng-click="add(item)">
+                            <a href="#" class="dummy-element">{{getWidget(item.type).name | translate}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="dummy-element" data-toggle="modal" data-target="#cssPopup">{{'css_personalize_css' | translate}}</a>
+                </li>
+                <li dnd-list="[]">
+                    <a href="#" class="dummy-element dndDragover">
+                        <i class="icon-trash-empty" style="font-size: x-large;"></i>
+                        {{'dropToDelete' | translate}}
+                        <i class="icon-trash-empty" style="font-size: x-large;"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="cssPopup" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog big-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">{{'css_personalize_css' | translate}}</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-md-3" style="padding-right: 5px;">
+                            <div class="list-group">
+                                <a ng-repeat="c in cssCustomClasses track by $index" class="list-group-item" ng-class="c===cssSelectedClass?'active':''" href="#" ng-click="cssSelectClass(c, $index)">{{c.selector}} </a>
+                                <a class="list-group-item" href="#" ng-click="cssAddClass()">{{'css_add_class' | translate}} <i class="icon-plus pull-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9" style="padding-left: 0px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <div class="form-inline">
+                                            <div class="form-group">
+                                                <label>{{'css_selector' | translate}}:</label>
+                                                <input type="text" class="form-control" ng-disabled="!cssSelectedClass" ng-model="cssSelectedClass.selector" style="width: 500px;">
+                                            </div>
+                                            <div class="form-group pull-right">
+                                                <a href="#" ng-click="cssRemoveClass(cssSelectedIndex)"><i class="icon-minus" style="vertical-align: -webkit-baseline-middle;"></i></a>
+                                            </div>
+                                        </div>
+                                    </h3>
+                                </div>
+                                <div class="panel-body" style="height: 300px; overflow-y: scroll;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>{{'css_properties' | translate}}</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>{{'css_values' | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <hr style="margin-top: 4px; margin-bottom: 12px;">
+                                    <div class="row" style="margin-bottom: 5px;" ng-repeat="prop in cssSelectedClass.properties track by $index">
+                                        <div class="col-md-4">
+                                            <autocomplete-selector id="cssSelectedIndex+'-'+$index" ng-model="prop" key="key" values="cssProperties" value-name="property">
+                                            </autocomplete-selector>
+                                            <!--<input type="text" ng-model="prop.key">-->
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" ng-model="prop.value">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="#" ng-click="cssRemoveProperty($index)"><i class="icon-minus" style="vertical-align: -webkit-baseline-middle;"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button ng-disabled="!cssSelectedClass" class="dummy-btn dummy-btn-success" style="margin: 10px; margin-left: 15px;" ng-click="cssAddProperty()">{{'css_add_property' | translate}}</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="dummy-btn dummy-btn-default" data-dismiss="modal">{{'css_close' | translate}}</button>
+                    <button type="button" class="dummy-btn dummy-btn-primary" ng-click="cssSaveClasses()">{{'css_save_changes' | translate}}</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <style>
+    {{customCss}}
+    </style>
+
+</div>

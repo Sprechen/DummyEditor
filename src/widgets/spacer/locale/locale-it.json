@@ -1,0 +1,9 @@
+{
+    "spacer": {
+        "name": "Spazio",
+        "type": "Tipo",
+        "horizontal": "Orizzontale",
+        "vertical": "Verticale",
+        "size": "Dimensione spazio"
+    }
+}

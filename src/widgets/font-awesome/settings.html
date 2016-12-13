@@ -1,0 +1,21 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="icon">{{'fontawesome.icon' | translate}}:</label>
+        <div class="input-group">
+          <input type="text" class="dummy-editor-form-control" id="icon" placeholder="{{'fontawesome.icon' | translate }}" ng-model="item.icon">
+          <span class="input-group-addon"><i class="fa {{item.icon}}" style="font-size: 20px;" aria-hidden="true"></i></span>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="color">{{'fontawesome.color' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="dummy-editor-form-control" id="color" placeholder="{{'fontawesome.color' | translate }}" ng-model="item.color">
+          <div class="input-group-addon" style="background: #{{item.color}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="size">{{'fontawesome.size' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="size" placeholder="{{'fontawesome.size' | translate }}" ng-model="item.size">
+    </div>
+</form>

@@ -1,0 +1,27 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="label">{{'input.label' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="label" placeholder="{{'input.label' | translate }}" ng-model="item.label">
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="dbname">{{'input.dbname' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="dbname" placeholder="{{'input.dbname' | translate }}" ng-model="item.name">
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="inputid">{{'input.inputId' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="inputid" placeholder="{{'input.inputId' | translate }}" ng-model="item.inputId">
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="placeholder">{{'input.placeholder' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="placeholder" placeholder="{{'input.placeholder' | translate }}" ng-model="item.placeholder">
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="type">{{'input.type' | translate}}:</label>
+        <select id="type" class="dummy-editor-form-control" ng-model="item.inputType">
+            <option value='text'>{{'input.text' | translate}}</option>
+            <option value='password'>{{'input.password' | translate}}</option>
+            <option value='file'>{{'input.file' | translate}}</option>
+            <option value='number'>{{'input.number' | translate}}</option>
+        </select>
+    </div>
+</form>

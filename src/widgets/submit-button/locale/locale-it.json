@@ -1,0 +1,18 @@
+{
+    "submitbutton": {
+        "name": "Bottone di Invio",
+        "text": "Testo bottone",
+        "bclass": "Tipo",
+        "default": "Default",
+        "primary": "Principale",
+        "success": "Successo",
+        "info": "Info",
+        "warning": "Attenzione",
+        "danger": "Pericolo",
+        "link": "Link",
+        "bsize": "Dimensione Bottone",
+        "large": "Grade",
+        "small": "Piccolo",
+        "extrasmall": "Molto Piccolo"
+    }
+}

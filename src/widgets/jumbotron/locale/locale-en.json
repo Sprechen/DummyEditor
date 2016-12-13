@@ -1,0 +1,18 @@
+{
+    "jumbotron": {
+        "name": "Jumbotron",
+        "bgcolor": "Background Color",
+        "bgimage": "Background Image",
+        "color": "Color",
+        "textalign": "Text align",
+        "left": "Left",
+        "center": "Center",
+        "right": "Right",
+        "custom_id": "Custom Id",
+        "textcolor": "Text color",
+        "padding": "Padding",
+        "top": "Top",
+        "bottom": "Bottom",
+        "size": "Size"
+    }
+}

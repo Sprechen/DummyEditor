@@ -1,0 +1,10 @@
+{
+    "form": {
+        "name": "Form",
+        "method": "Metodo",
+        "get": "Get",
+        "post": "Post",
+        "action": "Url del Server",
+        "inline": "Form in linea"
+    }
+}

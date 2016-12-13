@@ -1,0 +1,18 @@
+{
+    "card": {
+        "name": "Card",
+        "elevation": "Elevation",
+        "elevation-0": "No Elevation",
+        "elevation-1": "Elevation 1",
+        "elevation-2": "Elevation 2",
+        "elevation-3": "Elevation 3",
+        "elevation-4": "Elevation 4",
+        "elevation-5": "Elevation 5",
+        "border-radius": "Border Radius",
+        "bgcolor": "Background Color",
+        "color": "Color",
+        "padding": "Padding",
+        "size": "Size",
+        "margin": "Margin"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "container": {
+        "name": "Container",
+        "type": "Type",
+        "div": "DIV",
+        "header": "HEADER",
+        "section": "SECTION",
+        "article": "ARTICLE",
+        "main": "MAIN",
+        "summary": "SUMMARY",
+        "aside": "ASIDE",
+        "footer": "FOOTER",
+        "bgcolor": "Background Color",
+        "bgimage": "Background Image",
+        "color": "Color",
+        "textalign": "Text align",
+        "left": "Left",
+        "center": "Center",
+        "right": "Right",
+        "custom_id": "Custom Id",
+        "textcolor": "Text color",
+        "padding": "Padding",
+        "top": "Top",
+        "bottom": "Bottom",
+        "size": "Size"
+    }
+}

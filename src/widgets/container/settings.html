@@ -1,0 +1,69 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="element">{{'container.type' | translate}}:</label>
+        <select id="element" class="dummy-editor-form-control" ng-model="item.element">
+            <option value='div'>{{'container.div' | translate}}</option>
+            <option value='header'>{{'container.header' | translate}}</option>
+            <option value='section'>{{'container.section' | translate}}</option>
+            <option value='article'>{{'container.article' | translate}}</option>
+            <option value='main'>{{'container.main' | translate}}</option>
+            <option value='summary'>{{'container.summary' | translate}}</option>
+            <option value='aside'>{{'container.aside' | translate}}</option>
+            <option value='footer'>{{'container.footer' | translate}}</option>
+        </select>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="bgcolor">{{'container.bgcolor' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="dummy-editor-form-control" id="bgcolor" placeholder="{{'container.color' | translate }}" ng-model="item.background">
+          <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="bgimage">{{'container.bgimage' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">URL</div>
+          <input type="text" class="dummy-editor-form-control" id="bgimage" placeholder="{{'container.color' | translate }}" ng-model="item.imgbackground">
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="textcolor">{{'container.textcolor' | translate}}:</label>
+        <div class="input-group colorpicker-component">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="dummy-editor-form-control" id="textcolor" placeholder="{{'container.color' | translate }}" ng-model="item.textcolor">
+          <div class="input-group-addon" style="background: #{{item.textcolor}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="textalign">{{'container.textalign' | translate}}:</label>
+        <select id="textalign" class="dummy-editor-form-control" ng-model="item.textalign">
+            <option value='left'>{{'container.left' | translate}}</option>
+            <option value='center'>{{'container.center' | translate}}</option>
+            <option value='right'>{{'container.right' | translate}}</option>
+        </select>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label>{{'container.padding' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-down-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'container.size' | translate }}" ng-model="item.paddingtop">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-right-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'container.size' | translate }}" ng-model="item.paddingleft">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-left-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'container.size' | translate }}" ng-model="item.paddingright">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-up-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'container.size' | translate }}" ng-model="item.paddingbottom">
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="customid">{{'container.custom_id' | translate}}:</label>
+        <input id="customid" type="text" class="dummy-editor-form-control" placeholder="{{'container.custom_id' | translate }}" ng-model="item.custom_id">
+    </div>
+</form>

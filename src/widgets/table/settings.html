@@ -1,0 +1,99 @@
+<form ng-controller="tableSettingsController">
+    <div class="dummy-editor-form-group">
+        <label>{{'table.style' | translate}}:</label><br>
+        <input type="checkbox" ng-model="item.isStriped"> {{'table.striped' | translate}}<br>
+        <input type="checkbox" ng-model="item.isBordered"> {{'table.bordered' | translate}}<br>
+        <input type="checkbox" ng-model="item.isHover"> {{'table.hovered' | translate}}<br>
+        <input type="checkbox" ng-model="item.isCondensed"> {{'table.condensed' | translate}}<br>
+    </div>
+
+    <div class="dummy-editor-form-group">
+        <label for="showheader">{{'table.header' | translate}}:</label><br>
+        <input id="showheader" type="checkbox" ng-model="item.showHeader"> {{'table.showheader' | translate}}<br>
+    </div>
+
+    <div class="dummy-editor-form-group">
+        <label>{{'table.edit' | translate}}:</label>
+        <div class="dummy-table" style="overflow-x: scroll; margin-bottom: 15px;">
+        <table class="table table-striped table-bordered" stlye="max-width: initial; margin-bottom:5px important;">
+            <thead style="margin-bottom:5px important;">
+                <tr>
+                    <th ng-repeat="header in item.header track by $index" class="dummy-table-line">
+                        <div class="dummy-editor-form-group" style="margin-bottom: 0px;">
+                            <div class="input-group">
+                                 <div class="input-group-addon" style="padding-left:6px; padding-right:6px;" >
+                                     <i class="icon-angle-left" ng-click="columnMoveLeft($index)"></i>
+                                 </div>
+                                  <div class="input-group-addon" style="padding-left:6px; padding-right:6px;" >
+                                     <i class="icon-angle-right" ng-click="columnMoveRight($index)"></i>
+                                 </div>
+                                 <input class="dummy-editor-form-control" type="text" ng-model="item.header[$index]" style="min-width: 100px;">
+                                 <div class="input-group-addon" style="padding-left:6px; padding-right:6px;" >
+                                     <i class="icon-cancel" ng-click="removeColumn($index)"></i>
+                                 </div>
+                             </div>
+                         </div>
+                    </th>
+                    <th class="dummy-table-edit-cell" style="padding-left:30px; vertical-align: inherit;">{{'table.actions' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody style="margin-bottom:5px important;">
+                <tr ng-repeat="line in item.data track by $index">
+                    <td ng-repeat="cell in line track by $index" class="dummy-table-line">
+                        <div class="dummy-editor-form-group" style="margin-bottom: 0px;">
+                            <input type="text" ng-model="line[$index]" class="dummy-editor-form-control">
+                        </div>
+                    </td>
+                    <td class="dummy-table-edit-cell" style="vertical-align: inherit;">
+                        <i class="icon-angle-up" ng-click="rowMoveUp($index)"></i>
+                        <i class="icon-angle-down" ng-click="rowMoveDown($index)"></i>
+                        <i class="icon-cancel" ng-click="removeRow($index)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <div class="form-inline">
+            <button class="dummy-btn dummy-btn-primary" ng-click="addRow()">{{'table.addrow' | translate}}</button>
+            <button type="submit" class="dummy-btn dummy-btn-success pull-right" style="margin-left: 10px;" ng-click="addColumn()">{{'table.addcolumn' | translate}}</button>
+            <div class="dummy-editor-form-group pull-right">
+                <input type="text" class="dummy-editor-form-control" id="exampleInputName2" ng-model="newCol" placeholder="{{'table.columnname' | translate}}">
+            </div>
+        </div>
+
+
+    </div>
+</form>
+<style>
+    .dummy-table-line {
+        white-space: nowrap;
+    }
+    .dummy-table-edit-cell {
+        background: #eee;
+        text-align: right;
+        white-space: nowrap;
+    }
+    /* Let's get this party started */
+    .dummy-table::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    /* Track */
+    .dummy-table::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .dummy-table::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(51, 101, 138, 0.2);
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    }
+    .dummy-table::-webkit-scrollbar-thumb:window-inactive {
+    	background: rgba(51, 101, 138, 0.2);
+    }
+</style>

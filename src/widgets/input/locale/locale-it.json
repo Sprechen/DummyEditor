@@ -1,0 +1,14 @@
+{
+    "input": {
+        "name": "Input",
+        "label": "Label",
+        "dbname": "Server name",
+        "inputId": "Input Id",
+        "placeholder": "Placeholder",
+        "type": "Tipo",
+        "text": "Testo",
+        "password": "Password",
+        "file": "File",
+        "number": "Numero"
+    }
+}

@@ -1,0 +1,26 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="url">{{'image.url' | translate}}:</label>
+        <div class="input-block-level">
+          <input id="url" type="text" class="dummy-editor-form-control" placeholder="URL" ng-model="item.src">
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="alt">{{'image.description' | translate}}:</label>
+        <div class="input-block-level">
+          <input id="alt" type="text" class="dummy-editor-form-control" placeholder="Description" ng-model="item.alt">
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label>{{'image.dimensions' | translate}}:</label>
+        <div class="input-group">
+            <div class="input-group-addon">{{'image.width' | translate}}:</div>
+            <input type="text" class="dummy-editor-form-control" placeholder="Width" ng-model="item.width">
+        </div>
+        <br/>
+        <div class="input-group">
+            <div class="input-group-addon">{{'image.height' | translate}}:</div>
+            <input type="text" class="dummy-editor-form-control" placeholder="Height" ng-model="item.height">
+        </div>
+    </div>
+</form>

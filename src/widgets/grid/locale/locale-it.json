@@ -1,0 +1,13 @@
+{
+    "grid": {
+        "name": "Griglia",
+        "columns": "Colonne",
+        "columns1": "1 (tutti i dispositivi)",
+        "columns2": "2, 50%-50% (tutti i dispositivi)",
+        "columns3": "2, 70%-30% (tutti i dispositivi)",
+        "columns4": "2 (50%-50%) per desktop, 1 per smartphone",
+        "columns5": "2 (70%-30%) per desktop, 1 per smartphone",
+        "columns6": "3 (tutti i dispositivi)",
+        "columns7": "3 per desktop, 1 per smartphone"
+    }
+}

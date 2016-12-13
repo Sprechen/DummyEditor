@@ -1,0 +1,19 @@
+{
+    "bootstrapbutton": {
+        "name": "Bottone",
+        "text": "Testo bottone",
+        "bclass": "Tipo",
+        "default": "Default",
+        "primary": "Principale",
+        "success": "Successo",
+        "info": "Info",
+        "warning": "Attenzione",
+        "danger": "Pericolo",
+        "link": "Link",
+        "url": "Url",
+        "bsize": "Dimensione Bottone",
+        "large": "Grade",
+        "small": "Piccolo",
+        "extrasmall": "Molto Piccolo"
+    }
+}

@@ -1,0 +1,27 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="buttontext">{{'bootstrapbutton.text' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="buttontext" placeholder="{{'bootstrapbutton.text' | translate }}" ng-model="item.text">
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="buttontype">{{ 'bootstrapbutton.bclass' | translate}}:</label>
+        <select id="buttontype" class="dummy-editor-form-control" ng-model="item.bclass">
+            <option value='btn-default'>{{ 'bootstrapbutton.default' | translate}}</option>
+            <option value='btn-primary'>{{ 'bootstrapbutton.primary' | translate}}</option>
+            <option value='btn-success'>{{ 'bootstrapbutton.success' | translate}}</option>
+            <option value='btn-info'>{{ 'bootstrapbutton.info' | translate}}</option>
+            <option value='btn-warning'>{{ 'bootstrapbutton.warning' | translate}}</option>
+            <option value='btn-danger'>{{ 'bootstrapbutton.danger' | translate}}</option>
+            <option value='btn-link'>{{ 'bootstrapbutton.link' | translate}}</option>
+        </select>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="buttonsize">{{ 'bootstrapbutton.bsize' | translate}}:</label>
+        <select id="buttonsize" class="dummy-editor-form-control" ng-model="item.bsize">
+            <option value=''>{{ 'bootstrapbutton.default' | translate}}</option>
+            <option value='btn-lg'>{{ 'bootstrapbutton.large' | translate}}</option>
+            <option value='btn-sm'>{{ 'bootstrapbutton.small' | translate}}</option>
+            <option value='btn-xs'>{{ 'bootstrapbutton.extrasmall' | translate}}</option>
+        </select>
+    </div>
+</form>

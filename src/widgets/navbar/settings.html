@@ -1,0 +1,156 @@
+<form ng-controller="navbarSettingsController">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#brand" aria-controls="brand" role="tab" data-toggle="tab">{{'navbar.tab-brand' | translate}}</a>
+        </li>
+        <li role="presentation">
+            <a href="#menu" aria-controls="menu" role="tab" data-toggle="tab">{{'navbar.tab-menu' | translate}}</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="brand" style="margin-top:10px;">
+
+            <div class="dummy-editor-form-group">
+                <label for="navbarstyle">{{ 'navbar.style' | translate}}:</label>
+                <select id="navbarstyle" class="dummy-editor-form-control" ng-model="item.navbarStyle">
+                    <option value='navbar-default'>{{ 'navbar.default' | translate}}</option>
+                    <option value='navbar-default navbar-fixed-top'>{{ 'navbar.fixed-top' | translate}}</option>
+                    <option value='navbar-default navbar-fixed-bottom'>{{ 'navbar.fixed-bottom' | translate}}</option>
+                    <option value='navbar-default navbar-static-top'>{{ 'navbar.static-top' | translate}}</option>
+                    <option value='navbar-inverse'>{{ 'navbar.inverse' | translate}}</option>
+                    <option value='navbar-inverse navbar-fixed-top'>{{ 'navbar.inverse-fixed-top' | translate}}</option>
+                    <option value='navbar-inverse navbar-fixed-bottom'>{{ 'navbar.inverse-fixed-bottom' | translate}}</option>
+                    <option value='navbar-inverse navbar-static-top'>{{ 'navbar.inverse-static-top' | translate}}</option>
+                </select>
+            </div>
+
+            <div class="dummy-editor-form-group">
+                <label for="brand-img">{{'navbar.brand-img-long' | translate}}:</label>
+                <input id="brand-img" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.brand-img' | translate}}" ng-model="item.brand.img">
+            </div>
+            <div class="dummy-editor-form-group">
+                <label for="brand-text">{{'navbar.brand-img-alt-text' | translate}}:</label>
+                <input id="brand-text" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.brand-img-alt-text' | translate}}" ng-model="item.brand.imgText">
+            </div>
+            <div class="dummy-editor-form-group">
+                <label for="brand-text">{{'navbar.brand-text-long' | translate}}:</label>
+                <input id="brand-text" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.brand-text' | translate}}" ng-model="item.brand.text">
+            </div>
+            <div class="dummy-editor-form-group">
+                <label for="brand-url">{{'navbar.brand-url-long' | translate}}:</label>
+                <input id="brand-url" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.brand-url' | translate}}" ng-model="item.brand.url">
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="menu" style="margin-top:10px;">
+
+            <div class="checkbox">
+                <label for="menustyle">
+                    <input id="menustyle" type="checkbox" ng-model="item.menuRight">
+                    {{'navbar.menustyle' | translate}}
+                </label>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3" style="padding-right: 5px;">
+                    <div class="list-group">
+                        <a ng-repeat="element in item.menu track by $index" class="list-group-item" ng-class="element===selectedElement?'active':''" href="#" ng-click="selectElement(element, $index)">
+                            {{element.title}}
+                        </a>
+                        <a class="list-group-item" href="#" ng-click="addElement()">{{'navbar.add-element' | translate}}
+                            <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-9" style="padding-left: 0px;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label>{{'navbar.element-name' | translate}}:</label>
+                                        <input type="text" class="form-control" ng-disabled="!selectedElement" ng-model="selectedElement.title" style="width: 300px;">
+                                    </div>
+                                    <div class="form-group pull-right">
+                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-primary" href="#" ng-click="elementMoveUp(selectedIndex)">
+                                            <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+                                        </a>
+                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-primary" href="#" ng-click="elementMoveDown(selectedIndex)">
+                                            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                                        </a>
+                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-danger" href="#" ng-click="removeElement(selectedIndex)">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                        <div class="panel-body" style="height: 300px; overflow-y: scroll;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="dummy-editor-form-group">
+                                        <label for="element-url">{{'navbar.element-url' | translate}}:</label>
+                                        <input ng-disabled="!selectedElement" id="element-url" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.element-url' | translate}}" ng-model="selectedElement.url">
+                                    </div>
+
+                                    <div class="checkbox">
+                                        <label for="element-active">
+                                            <input ng-disabled="!selectedElement" id="element-active" type="checkbox" ng-model="selectedElement.active">
+                                            {{'navbar.element-active' | translate}}
+                                        </label>
+                                    </div>
+
+                                    <div class="dummy-editor-form-group">
+                                        <label for="type">{{'navbar.element-type' | translate}}:</label>
+                                        <select ng-disabled="!selectedElement" id="type" class="dummy-editor-form-control" ng-model="selectedElement.type">
+                                            <option value='url'>{{'navbar.element-default' | translate}}</option>
+                                            <option value='dropdown'>{{'navbar.element-dropdown' | translate}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div ng-if="selectedElement.type=='dropdown'">
+                                        <label>{{'navbar.dropdown-elements'}}:</label>
+                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <div ng-repeat="c in selectedElement.data track by $index" class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="heading{{$index}}">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
+                                                            {{c.title}}
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$idnex}}">
+                                                    <div class="panel-body">
+                                                        <div class="dummy-editor-form-group">
+                                                            <label for="dd-text">{{'navbar.dd-text-long' | translate}}:</label>
+                                                            <input id="dd-text" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.dd-text' | translate}}" ng-model="c.title">
+                                                        </div>
+                                                        <div class="dummy-editor-form-group">
+                                                            <label for="dd-url">{{'navbar.dd-url-long' | translate}}:</label>
+                                                            <input id="dd-url" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.dd-url' | translate}}" ng-model="c.url">
+                                                        </div>
+                                                        <button class="dummy-btn dummy-btn-danger pull-right" ng-click="removeDDElement($index)">{{'navbar.dd-remove-element' | translate}}</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <button ng-if="selectedElement && selectedElement.type=='dropdown'" ng-disabled="!selectedElement" class="dummy-btn dummy-btn-success" style="margin: 10px; margin-left: 15px;" ng-click="addDDElement()">{{'navbar.add-dd-element' | translate}}</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,12 @@
+<table class="table {{item.styleClasses}} {{item.customClassesPrintable}}">
+    <thead ng-if="item.showHeader">
+        <tr>
+            <th ng-repeat="header in item.header track by $index">{{header}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="line in item.data track by $index">
+            <td ng-repeat="cell in line track by $index">{{cell}}</td>
+        </tr>
+    </tbody>
+</table>

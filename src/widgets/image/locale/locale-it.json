@@ -1,0 +1,10 @@
+{
+    "image": {
+        "name": "Immagine",
+        "url": "Url",
+        "description": "Descrizione",
+        "dimensions": "Dimensioni",
+        "width": "Larghezza",
+        "height": "Altezza"
+    }
+}

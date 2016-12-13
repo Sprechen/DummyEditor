@@ -1,0 +1,9 @@
+{
+    "well": {
+        "name": "Well",
+        "type": "Type",
+        "default": "Default",
+        "large": "Large",
+        "small": "small"
+    }
+}

@@ -1,0 +1,14 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="color">{{'separator.color' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="dummy-editor-form-control" id="color" placeholder="{{'separator.color' | translate }}" ng-model="item.color">
+          <div class="input-group-addon" style="background: #{{item.color}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="size">{{'separator.size' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="size" placeholder="{{'separator.size' | translate }}" ng-model="item.size">
+    </div>
+</form>

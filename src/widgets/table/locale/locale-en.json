@@ -1,0 +1,17 @@
+{
+    "table": {
+        "name": "Table",
+        "style": "Style",
+        "striped": "Striped",
+        "bordered": "Bordered",
+        "hovered": "Hovered",
+        "condensed": "Condensed",
+        "header": "Header",
+        "showheader": "Show the table header",
+        "edit": "Edit",
+        "actions": "Actions",
+        "addrow": "Add Row",
+        "addcolumn": "Add Column",
+        "columnname": "Column name"
+    }
+}

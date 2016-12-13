@@ -1,0 +1,56 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="bgcolor">{{'jumbotron.bgcolor' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="dummy-editor-form-control" id="bgcolor" placeholder="{{'jumbotron.color' | translate }}" ng-model="item.background">
+          <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="bgimage">{{'jumbotron.bgimage' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon">URL</div>
+          <input type="text" class="dummy-editor-form-control" id="bgimage" placeholder="{{'jumbotron.color' | translate }}" ng-model="item.imgbackground">
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="textcolor">{{'jumbotron.textcolor' | translate}}:</label>
+        <div class="input-group colorpicker-component">
+          <div class="input-group-addon">#</div>
+          <input type="text" class="dummy-editor-form-control" id="textcolor" placeholder="{{'jumbotron.color' | translate }}" ng-model="item.textcolor">
+          <div class="input-group-addon" style="background: #{{item.textcolor}}; width: 40px;"></div>
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="textalign">{{'jumbotron.textalign' | translate}}:</label>
+        <select id="textalign" class="dummy-editor-form-control" ng-model="item.textalign">
+            <option value='left'>{{'jumbotron.left' | translate}}</option>
+            <option value='center'>{{'jumbotron.center' | translate}}</option>
+            <option value='right'>{{'jumbotron.right' | translate}}</option>
+        </select>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label>{{'jumbotron.padding' | translate}}:</label>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-down-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'jumbotron.size' | translate }}" ng-model="item.paddingtop">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-right-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'jumbotron.size' | translate }}" ng-model="item.paddingleft">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-left-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'jumbotron.size' | translate }}" ng-model="item.paddingright">
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon"><i class="icon-up-big"></i></div>
+          <input type="text" class="dummy-editor-form-control" placeholder="{{'jumbotron.size' | translate }}" ng-model="item.paddingbottom">
+        </div>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="customid">{{'jumbotron.custom_id' | translate}}:</label>
+        <input id="customid" type="text" class="dummy-editor-form-control" placeholder="{{'jumbotron.custom_id' | translate }}" ng-model="item.custom_id">
+    </div>
+</form>

@@ -1,0 +1,13 @@
+<form>
+    <div class="dummy-editor-form-group">
+        <label for="type">{{'spacer.type' | translate}}:</label>
+        <select id="type" class="dummy-editor-form-control" ng-model="item.horizontal">
+            <option value='0'>{{'spacer.vertical' | translate}}</option>
+            <option value='1'>{{'spacer.horizontal' | translate}}</option>
+        </select>
+    </div>
+    <div class="dummy-editor-form-group">
+        <label for="size">{{'spacer.size' | translate}}:</label>
+        <input type="text" class="dummy-editor-form-control" id="size" placeholder="{{'spacer.size' | translate }}" ng-model="item.size">
+    </div>
+</form>

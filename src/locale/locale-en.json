@@ -1,0 +1,20 @@
+{
+    "elements": "Elements",
+    "containers": "Containers",
+    "dropToDelete": "Drop here to delete",
+    "generateHtml": "Generate HTML",
+    "buttonClose": "Close",
+    "buttonSave": "Save",
+    "settingsTitle": "Settings",
+    "buttonDelete": "Delete",
+    "css_personalize_css": "Personalize CSS",
+    "css_selector": "Selector",
+    "css_add_class": "Add a new class",
+    "css_properties": "Properties",
+    "css_values": "Values",
+    "css_add_property": "Add Property",
+    "css_close": "Close",
+    "css_save_changes": "Save Changes",
+    "custom_classes": "Custom Classes",
+    "add_css_class": "Add Class"
+}

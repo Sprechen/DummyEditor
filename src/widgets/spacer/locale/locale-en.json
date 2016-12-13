@@ -1,0 +1,9 @@
+{
+    "spacer": {
+        "name": "Spacer",
+        "type": "Type",
+        "horizontal": "Horizontal",
+        "vertical": "Vertical",
+        "size": "Spacer size"
+    }
+}
