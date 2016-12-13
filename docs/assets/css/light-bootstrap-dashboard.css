@@ -2847,7 +2847,7 @@ body > .navbar-collapse[data-color="purple"]:after {
   }
 
   .navbar .navbar-collapse.collapse,
-  .navbar .navbar-collapse.collapse.in,
+  /*.navbar .navbar-collapse.collapse.in,*/
   .navbar .navbar-collapse.collapsing {
     display: none !important;
   }
@@ -3339,7 +3339,7 @@ body > .navbar-collapse[data-color="purple"]:after {
   }
 
   .navbar-collapse.collapse.in {
-    display: block;
+    display: block !important;
   }
 
   .navbar-header .collapse, .navbar-toggle {
