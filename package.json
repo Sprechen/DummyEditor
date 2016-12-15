@@ -1,0 +1,42 @@
+{
+  "name": "dummyeditor",
+  "version": "1.0.0",
+  "description": "DummyEditor is an AngularJS directive that allows you to create bootstrap based web pages",
+  "keywords": [
+    "DummyEditor",
+    "dummy-editor",
+    "angular",
+    "angularjs",
+    "directive",
+    "bootstrap",
+    "html"
+  ],
+  "main": "src/dummy-editor.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sprechen/DummyEditor.git"
+  },
+  "author": "Luca Roverelli <luca.roverelli@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Sprechen/DummyEditor/issues"
+  },
+  "homepage": "http://www.dummyeditor.com",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-ckeditor": "^0.3.1",
+    "angular-translate": "^2.13.1",
+    "angular-translate-loader-static-files": "^2.13.1",
+    "angular-translate-loader-url": "^2.13.1",
+    "bootstrap": "^3.3.7",
+    "ckeditor": "^4.6.1",
+    "components-font-awesome": "^4.7.0",
+    "jquery": "^3.1.1"
+  }
+}

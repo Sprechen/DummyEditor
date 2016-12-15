@@ -13,7 +13,7 @@ dummyEditor.addWidget({
         };
         out.html += '<img class="image-'+item.id+' '+item.customClassesPrintable+'" src="'+item.src+'" ';
         if (item.alt) out.html += 'alt="'+item.alt+'" ';
-        out.css = '.image-'+item.id+': {\n';
+        out.css = '.image-'+item.id+' {\n';
         if (item.width) out.css += 'width: '+item.width+';\n';
         if (item.height) out.css += 'height: '+item.height+';\n';
         out.css += '}\n';
