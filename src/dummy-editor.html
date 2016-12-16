@@ -17,43 +17,6 @@
         </ul>
     </script>
 
-    <!--
-<div id="dxy" style="position:absolute; left: 0px; bottom: 0px; width:150px; z-index: 16777271;">
-    <nav class="navbar-v navbar-inverse">
-        <div style="height:30px; cursor:move;" id="move"></div>
-        <div class="navbar-header navbar-header-v">
-            <center>
-        <button type="button" class="dummy-btn dummy-btn-primary" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-    </center>
-      </div>
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'elements' | translate }} <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                  <li ng-repeat="item in models.templates" ng-click="add(item)">
-                      <a href="#">{{getWidget(item.type).name | translate}}</a>
-                  </li>
-              </ul>
-            </li>
-            <li>
-                <a href="#" dnd-list="[]">{{'dropToDelete' | translate}}</a>
-            </li>
-          </ul>
-
-
-
-      </div>
-      <div style="height:30px; cursor:move;" id="move2"></div>
-    </nav>
-</div>
--->
-
     <!-- Main area with dropzones and source code -->
     <div class="col-md-12 edit-area">
         <div class="row">
@@ -151,9 +114,7 @@
                                     <hr style="margin-top: 4px; margin-bottom: 12px;">
                                     <div class="row" style="margin-bottom: 5px;" ng-repeat="prop in cssSelectedClass.properties track by $index">
                                         <div class="col-md-4">
-                                            <autocomplete-selector id="cssSelectedIndex+'-'+$index" ng-model="prop" key="key" values="cssProperties" value-name="property">
-                                            </autocomplete-selector>
-                                            <!--<input type="text" ng-model="prop.key">-->
+                                            <autocomplete-selector id="cssSelectedIndex+'-'+$index" ng-model="prop.key" values="cssProperties" value-name="property"></autocomplete-selector>
                                         </div>
                                         <div class="col-md-7">
                                             <input type="text" class="form-control" ng-model="prop.value">

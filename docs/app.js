@@ -4,7 +4,7 @@ dummyEditor.setPath('../src');
 dummyEditor.init("en", ['code', 'editor', 'container', 'grid', 'image',
         'font-awesome', 'bootstrap-glyphicons', 'bootstrap-button',
         'bootstrap-blockquote', 'form', 'input', 'submit-button', 'separator',
-        'table', 'spacer', 'carousel', 'well', 'navbar', 'code-snippet', 'card']);
+        'table', 'spacer', 'carousel', 'well', 'navbar', 'code-snippet', 'card', 'jumbotron']);
 
 
 

@@ -1,9 +1,9 @@
-<div ng-controller="autocompleteSelectorController">
+<div>
     <div class="input-group">
-        <input ng-blur="closeDropdown($event)" type="text" class="form-control" ng-model="ngModel[key]" ng-focus="openDropdown()">
+        <input ng-blur="closeDropdown($event)" type="text" class="form-control" ng-model="value" ng-focus="openDropdown()">
         <div class="input-group-addon"><a href="#" ng-click="toggleDropdown()"><span class="caret"></span></a></div>
         <ul id="as-dropdown-{{id}}" class="as-dropdown">
-            <li ng-repeat="el in values | filter:ngModel[key]">
+            <li ng-repeat="el in values | filter:value">
                 <a id="dropdown_value-{{el[valueName]}}" data-value="{{el[valueName]}}" href="#" ng-click="setValue(el[valueName])">{{el[valueName]}}</a>
             </li>
         </ul>
