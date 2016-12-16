@@ -10,13 +10,13 @@ dummyEditor.addWidget({
     saveSettings: function(item) {
         item.style = "";
         if (item.background) {
-            item.style += "background: #"+item.background+"; ";
+            item.style += "background: "+item.background+"; ";
         }
         if (item.imgbackground) {
             item.style += "background-image: url(\""+item.imgbackground+"\"); ";
         }
         if (item.textcolor) {
-            item.style += "color: #"+item.textcolor+"; ";
+            item.style += "color: "+item.textcolor+"; ";
         }
         if (item.textalign) {
             item.style += "text-align: "+item.textalign+"; ";
@@ -41,10 +41,10 @@ dummyEditor.addWidget({
         };
         out.css += ".dummy-container-"+item.id+" {\n";
         if (item.background) {
-            out.css += "background: #"+item.background+";\n";
+            out.css += "background: "+item.background+";\n";
         }
         if (item.textcolor) {
-            out.css += "color: #"+item.textcolor+";\n";
+            out.css += "color: "+item.textcolor+";\n";
         }
         if (item.textalign) {
             out.css += "text-align: "+item.textalign+";\n";

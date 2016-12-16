@@ -3,7 +3,7 @@ dummyEditor.addWidget({
         type: "triplets",
         info: false,
         title: "test",
-        backgroud: "1abc9c",
+        background: "1abc9c",
         text: "text"
     },
     name: "triplets.name",

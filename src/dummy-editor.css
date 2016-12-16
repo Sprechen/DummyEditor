@@ -1239,3 +1239,10 @@ fieldset[disabled] .dummy-btn-link:focus {
 .icon-right:before { content: '\f178'; } /* '' */
 .icon-sliders:before { content: '\f1de'; } /* '' */
 .icon-trash:before { content: '\f1f8'; } /* '' */
+
+
+
+/*jquery minicolors style*/
+.minicolors-theme-bootstrap.minicolors-position-right .minicolors-swatch {
+    margin-top: 3px;
+}

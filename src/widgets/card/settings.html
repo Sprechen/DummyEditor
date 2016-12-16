@@ -13,11 +13,7 @@
             </div>
             <div class="dummy-editor-form-group">
                 <label for="bgcolor">{{'card.bgcolor' | translate}}:</label>
-                <div class="input-group">
-                  <div class="input-group-addon">#</div>
-                  <input type="text" class="dummy-editor-form-control" id="bgcolor" placeholder="{{'card.color' | translate }}" ng-model="item.background">
-                  <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
-                </div>
+                <colorpicker placeholder="{{'card.color' | translate }}" ng-model="item.background" id="bgcolor"></colorpicker>
             </div>
             <div class="dummy-editor-form-group">
                 <label>{{'card.padding' | translate}}:</label>
@@ -65,7 +61,7 @@
                 margin-right: {{item.marginright}}; margin-bottom: {{item.marginbottom}};
                 padding-top: {{item.paddingtop}}; padding-left: {{item.paddingleft}};
                 padding-right: {{item.paddingright}}; padding-bottom: {{item.paddingbottom}};
-                background: #{{item.background}};">
+                background: {{item.background}};">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
                 </div>
             </div>

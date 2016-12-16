@@ -5,11 +5,8 @@
     </div>
     <div class="dummy-editor-form-group">
         <label for="bgcolor">{{'triplets.bgcolor' | translate}}:</label>
-        <div class="input-group">
-          <div class="input-group-addon">#</div>
-          <input type="text" class="form-control" id="bgcolor" placeholder="{{'container.color' | translate }}" ng-model="item.background">
-          <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
-        </div>
+        <colorpicker placeholder="{{'container.color' | translate }}" ng-model="item.background" id="bgcolor"></colorpicker>
+        
     </div>
     <div class="dummy-editor-form-group">
         <label for="text">{{'triplets.text' | translate}}:</label>

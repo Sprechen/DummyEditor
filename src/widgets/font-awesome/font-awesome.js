@@ -8,9 +8,9 @@ dummyEditor.addWidget({
     name: "fontawesome.name",
     dependencies: [],
     generateCode: function(item) {
-        var css = ".fa-"+item.id+" {\ncolor: #"+item.color+";\nfont-size: "+item.size+";\n}\n";
+        var css = ".fa-"+item.id+" {\ncolor: "+item.color+";\nfont-size: "+item.size+";\n}\n";
         return {
-            html: '<i class="fa '+item.icon+' '+item.customClassesPrintable+'" aria-hidden="true"></i>',
+            html: '<i class="fa-'+item.id+' fa '+item.icon+' '+item.customClassesPrintable+'" aria-hidden="true"></i>',
             css: css
         };
     }
