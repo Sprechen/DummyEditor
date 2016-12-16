@@ -58,7 +58,7 @@ function __getScripts(scripts, callback) {
 }
 
 dummyEditor.addWidget = function(widget) {
-    //if (!widget.name) throw new Error("widget must have a name property!");
+    if (!widget.name) throw new Error("widget must have a name property!");
     if (!widget.template) throw new Error("widget must have a template!");
     if (!widget.template.type) throw new Error("widget must have a type!");
     widget.template.info = false;
@@ -137,59 +137,67 @@ dummyEditor.__performInit = function(lang, cb) {
     }]);
 
 
+
     dummyEditor._module.directive("autocompleteSelector", function() {
         return {
             restrict: 'AE',
             scope: {
                 id: "=",
-                ngModel: "=",
-                key: "@",
                 values: "=",
                 valueName: "@"
             },
-            templateUrl: dummyEditor._path+'/autocomplete-selector.html'
-        }
-    });
+            require: "ngModel",
+            templateUrl: dummyEditor._path+'/autocomplete-selector.html',
+            link: function(scope, iElement, iAttrs, ngModelCtrl) {
+                var canOpen = false;
+                ngModelCtrl.$render = function() {
+                    scope.value = ngModelCtrl.$viewValue.value;
+                };
 
-    dummyEditor._module.controller("autocompleteSelectorController", function($scope, $filter, $timeout) {
-        $scope.toClose = false;
-        $scope.toggleDropdown = function() {
-            $("#as-dropdown-"+$scope.id).toggle();
-        }
-        $scope.closeDropdown = function(event) {
-            $("#as-dropdown-"+$scope.id).hide();
-            if (event && event.relatedTarget) {
-                var t = event.relatedTarget;
-                if (t) {
-                    var value = t.getAttribute("data-value");
-                    if (value) {
-                        $scope.toClose = true;
-                        $scope.ngModel[$scope.key] = value;
+                ngModelCtrl.$formatters.push(function(modelValue) {
+                    return {
+                        value: modelValue
                     }
+                });
+                scope.$watch('value', function() {
+                    ngModelCtrl.$setViewValue(scope.value);
+                    if (scope.toClose) {
+                        scope.toClose = false;
+                        return;
+                    }
+                });
+                scope.toClose = false;
+                scope.toggleDropdown = function() {
+                    if (canOpen) $("#as-dropdown-"+scope.id).toggle();
                 }
+                scope.closeDropdown = function(event) {
+                    if (canOpen) $("#as-dropdown-"+scope.id).hide();
+                    if (event && event.relatedTarget) {
+                        var t = event.relatedTarget;
+                        if (t) {
+                            var value = t.getAttribute("data-value");
+                            if (value) {
+                                scope.toClose = true;
+                                scope.value = value;
+                            }
+                        }
+                    }
+                    return false;
+                }
+                scope.openDropdown = function() {
+                    if (canOpen) $("#as-dropdown-"+scope.id).show();
+                }
+                scope.setValue = function(value) {
+                    scope.value = value;
+                    scope.toClose = true;
+                    scope.toggleDropdown();
+                }
+                setInterval(function() {
+                    canOpen = true;
+                    scope.$apply();
+                }, 100);
             }
-            return false;
         }
-        $scope.openDropdown = function() {
-            $("#as-dropdown-"+$scope.id).show();
-        }
-        $scope.$watch("ngModel", function(newVal, oldVal) {
-            if (newVal[$scope.key]==oldVal[$scope.key]) return;
-            if ($scope.toClose) {
-                $scope.toClose = false;
-                return;
-            }
-            $("#as-dropdown-"+$scope.id).show();
-        }, true);
-        $scope.setValue = function(value) {
-            $scope.ngModel[$scope.key] = value;
-            $scope.toClose = true;
-            $scope.toggleDropdown();
-        }
-        $timeout(function() {
-            $scope.closeDropdown();
-        }, 100);
-
     });
 
     dummyEditor._module.directive("dummyEditor", function() {
@@ -396,7 +404,6 @@ dummyEditor.__performInit = function(lang, cb) {
             console.error(response);
         });
         $scope.cssSelectClass = function(c, index) {
-            $(".as-dropdown").hide();
             $scope.cssSelectedClass = c;
             $scope.cssSelectedIndex = index;
         }

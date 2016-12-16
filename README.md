@@ -71,7 +71,7 @@ In your HTML page, add the dummy-editor dependencies as follows (using bower):
 Initialize the DummyEditor library, choosing the language and the widgets that you want to enable:
 ```
 dummyEditor.setPath('/bower_components/dummyeditor/src');
-dummyEditor.init("en", ['code', 'editor', 'container', 'grid', 'image', 'font-awesome', 'bootstrap-glyphicons', 'bootstrap-button', 'bootstrap-blockquote', 'form', 'input', 'submit-button', 'separator', 'table', 'spacer', 'carousel', 'well', 'navbar', 'code-snippet', 'card']);
+dummyEditor.init("en", ['code', 'editor', 'container', 'grid', 'image', 'font-awesome', 'bootstrap-glyphicons', 'bootstrap-button', 'bootstrap-blockquote', 'form', 'input', 'submit-button', 'separator', 'table', 'spacer', 'carousel', 'well', 'navbar', 'code-snippet', 'card', 'jumbotron']);
 ```
 NOTE: remember to execute the `setPath` method to correctly set the path of the DummyEditor source code. This is necessary because DummyEditor dynamically load different files for the widgets and their translations. By default, it assume to be available in the `/src` folder.
 
