@@ -60,7 +60,7 @@ dummyEditor.addWidget({
             out.css += "padding-bottom: "+item.paddingbottom+";\n";
         }
         out.css += "}\n";
-        out.html += '<div';
+        out.html += '<div class="container">\n<div';
         if (item.custom_id) out.html += ' id="'+item.custom_id+'"';
         out.html +=' class="jumbotron '+item.customClassesPrintable+' dummy-container-'+item.id+'">\n';
         for (var i = 0; i<item.columns[0].length; i++) {
@@ -69,7 +69,7 @@ dummyEditor.addWidget({
             out.html += r.html+"\n";
             out.css += r.css+"\n";
         }
-        out.html += '</div>\n';
+        out.html += '</div>\n</div>\n';
         return out;
     }
 });
