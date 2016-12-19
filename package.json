@@ -16,7 +16,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "./node_modules/jshint/bin/jshint ./src/dummy-editor.js"
   },
   "repository": {
     "type": "git",
@@ -39,5 +39,8 @@
     "ckeditor": "^4.6.1",
     "components-font-awesome": "^4.7.0",
     "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4"
   }
 }
