@@ -1,91 +1,100 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/logo128px.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="author" content="Luca Roverelli">
-	<meta name="description" content="DummyEditor is an AngularJS directive to create bootstrap based web pages.">
-	<meta name="keywords" content="DummyEditor,dummy-editor,dummy,editor,bootstrap,twitter,angular,angularjs,html5,css,wysiwyg,html,web,page,web page,css3,easy creation,pages,generate,drag-n-drop,dragndrop,dnd,library,javascript,github,free">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="icon" type="image/png" href="assets/img/logo128px.png">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="author" content="Luca Roverelli">
+        <meta name="description" content="DummyEditor is an AngularJS directive to create bootstrap based web pages.">
+        <meta name="keywords" content="DummyEditor,dummy-editor,dummy,editor,bootstrap,twitter,angular,angularjs,html5,css,wysiwyg,html,web,page,web page,css3,easy creation,pages,generate,drag-n-drop,dragndrop,dnd,library,javascript,github,free">
 
+        <title>DummyEditor</title>
 
-	<title>DummyEditor</title>
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+        <meta name="viewport" content="width=device-width"/>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+        <!-- Bootstrap core CSS     -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
 
+        <!-- Animation library for notifications   -->
+        <link href="assets/css/animate.min.css" rel="stylesheet"/>
 
-    <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+        <!--  Light Bootstrap Table core CSS    -->
+        <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+        <!--     Fonts and icons     -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+        <link href="vendors/jquery-minicolors/jquery.minicolors.css" rel="stylesheet"/>
+        <link href="../src/dummy-editor.css" rel="stylesheet">
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                },
+                i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+            ga('create', 'UA-89242818-1', 'auto');
+            ga('send', 'pageview');
+        </script>
 
+    </head>
+    <body style="margin-bottom: 70px;">
 
-    <!--     Fonts and icons     -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-  <link href="vendors/jquery-minicolors/jquery.minicolors.css" rel="stylesheet"/>
-	<link href="../src/dummy-editor.css" rel="stylesheet">
+        <div ng-app="app" ng-controller="mainController">
 
-</head>
-<body style="margin-bottom: 70px;">
+            <dummy-editor ng-model="demoModel" custom-css="demoCss"></dummy-editor>
 
+            <center>
+                <button class="btn btn-warning btn-lg" ng-click="generate()" style="margin: 10px;">Generate Code!</button>
+                <button class="btn btn-danger btn-lg" ng-click="cleanup()" style="margin: 10px;">Clean Up!</button>
+            </center>
+            <center>
+                <a href="show.html" class="btn btn-success" style="margin: 10px;">Show Generated Page</a>
+                <a href="index.html" class="btn btn-success" style="margin: 10px;">Home Page</a>
+            </center>
 
-<div ng-app="app" ng-controller="mainController">
+            <div class="modal fade" id="show-code" role="dialog">
+                <div class="modal-dialog big-modal">
 
-	<dummy-editor ng-model="demoModel" custom-css="demoCss"></dummy-editor>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Generated Code</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="dummy-editor-form-control" rows="15">
+                                {{content}}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-	<center>
-		<button class="btn btn-warning btn-lg" ng-click="generate()" style="margin: 10px;">Generate Code!</button>
-		<button class="btn btn-danger btn-lg" ng-click="cleanup()" style="margin: 10px;">Clean Up!</button>
-	</center>
-	<center>
-		<a href="show.html" class="btn btn-success" style="margin: 10px;">Show Generated Page</a>
-		<a href="index.html" class="btn btn-success" style="margin: 10px;">Home Page</a>
-	</center>
-
-	<div class="modal fade" id="show-code" role="dialog">
-		<div class="modal-dialog big-modal">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Generated Code</h4>
-				</div>
-				<div class="modal-body">
-					<textarea class="dummy-editor-form-control" rows="15">
-						{{content}}
-					</textarea>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-</body>
+    </body>
 
     <!--   Core JS Files   -->
     <!--<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>-->
-	<script src="vendors/jquery/dist/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-	<script src="vendors/angular/angular.js"></script>
-	<script src="vendors/angular-translate/angular-translate.min.js"></script>
-	<script src="vendors/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
-	<script src="vendors/ckeditor/ckeditor.js"></script>
-	<script src="vendors/angular-ckeditor/angular-ckeditor.js"></script>
-	<script src="vendors/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="vendors/angular/angular.js"></script>
+    <script src="vendors/angular-translate/angular-translate.min.js"></script>
+    <script src="vendors/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="vendors/ckeditor/ckeditor.js"></script>
+    <script src="vendors/angular-ckeditor/angular-ckeditor.js"></script>
+    <script src="vendors/jquery-minicolors/jquery.minicolors.min.js"></script>
 
-	<script src="../src/dummy-editor.js"></script>
-	<script src="app.js"></script>
-
-
+    <script src="../src/dummy-editor.js"></script>
+    <script src="app.js"></script>
 
 </html>
