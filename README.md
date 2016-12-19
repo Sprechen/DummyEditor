@@ -1,4 +1,5 @@
 # DummyEditor #
+[![Build Status](https://travis-ci.org/Sprechen/DummyEditor.svg?branch=master)](https://travis-ci.org/Sprechen/DummyEditor)
 
 DummyEditor is an AngularJS directive to create bootstrap based web pages.
 It comes with a set of pre-built widgets, that are the most popular bootstrap components.
