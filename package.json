@@ -29,6 +29,7 @@
   },
   "homepage": "http://www.dummyeditor.com",
   "dependencies": {
+    "@claviska/jquery-minicolors": "^2.2.4",
     "angular": "^1.6.0",
     "angular-ckeditor": "^0.3.1",
     "angular-translate": "^2.13.1",

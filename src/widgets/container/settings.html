@@ -14,11 +14,7 @@
     </div>
     <div class="dummy-editor-form-group">
         <label for="bgcolor">{{'container.bgcolor' | translate}}:</label>
-        <div class="input-group">
-          <div class="input-group-addon">#</div>
-          <input type="text" class="dummy-editor-form-control" id="bgcolor" placeholder="{{'container.color' | translate }}" ng-model="item.background">
-          <div class="input-group-addon" style="background: #{{item.background}}; width: 40px;"></div>
-        </div>
+        <colorpicker placeholder="{{'container.color' | translate }}" ng-model="item.background" id="bgcolor"></colorpicker>
     </div>
     <div class="dummy-editor-form-group">
         <label for="bgimage">{{'container.bgimage' | translate}}:</label>
@@ -29,11 +25,7 @@
     </div>
     <div class="dummy-editor-form-group">
         <label for="textcolor">{{'container.textcolor' | translate}}:</label>
-        <div class="input-group colorpicker-component">
-          <div class="input-group-addon">#</div>
-          <input type="text" class="dummy-editor-form-control" id="textcolor" placeholder="{{'container.color' | translate }}" ng-model="item.textcolor">
-          <div class="input-group-addon" style="background: #{{item.textcolor}}; width: 40px;"></div>
-        </div>
+        <colorpicker placeholder="{{'container.color' | translate }}" ng-model="item.textcolor" id="textcolor"></colorpicker>
     </div>
     <div class="dummy-editor-form-group">
         <label for="textalign">{{'container.textalign' | translate}}:</label>

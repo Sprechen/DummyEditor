@@ -28,7 +28,7 @@ dummyEditor.addWidget({
         if (item.paddingleft) item.style += 'padding-left: '+item.paddingleft+'; ';
         if (item.paddingright) item.style += 'padding-right: '+item.paddingright+'; ';
         if (item.paddingbottom) item.style += 'padding-bottom: '+item.paddingbottom+'; ';
-        if (item.background) item.style += 'background: #'+item.background+';';
+        if (item.background) item.style += 'background:'+item.background+';';
     },
     generateCode: function(item) {
         var out = {
@@ -47,7 +47,7 @@ dummyEditor.addWidget({
         out.css += elevationOptions[item.elevation]+"\n";
         out.css += 'border-radius:'+item.borderRadius+';\n';
         if (item.background) {
-            out.css += "background: #"+item.background+";\n";
+            out.css += "background: "+item.background+";\n";
         }
         if (item.paddingtop) {
             out.css += "padding-top: "+item.paddingtop+";\n";

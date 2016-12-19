@@ -8,11 +8,7 @@
     </div>
     <div class="dummy-editor-form-group">
         <label for="color">{{'fontawesome.color' | translate}}:</label>
-        <div class="input-group">
-          <div class="input-group-addon">#</div>
-          <input type="text" class="dummy-editor-form-control" id="color" placeholder="{{'fontawesome.color' | translate }}" ng-model="item.color">
-          <div class="input-group-addon" style="background: #{{item.color}}; width: 40px;"></div>
-        </div>
+        <colorpicker placeholder="{{'fontawesome.color' | translate }}" ng-model="item.color" id="color"></colorpicker>
     </div>
     <div class="dummy-editor-form-group">
         <label for="size">{{'fontawesome.size' | translate}}:</label>

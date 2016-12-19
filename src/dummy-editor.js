@@ -8,53 +8,53 @@ dinamically!
 **/
 var requestedJquery = "3.1.1";
 (function() {
-    if (typeof $ === 'undefined' || !$ || !$.fn || !$.fn.jquery) {
-        return console.error("DummyEditor need jQuery "+requestedJquery+"!");
+  if (typeof $ === 'undefined' || !$ || !$.fn || !$.fn.jquery) {
+    return console.error("DummyEditor need jQuery "+requestedJquery+"!");
+  }
+  var required = requestedJquery.split('.');
+  var v = $.fn.jquery;
+  var numbers = v.split('.');
+  for (var i = 0; i<numbers.length; i++) {
+    if (numbers[i]<required[i]) {
+      return printJqueryError(v);
     }
-    var required = requestedJquery.split('.');
-    var v = $.fn.jquery;
-    var numbers = v.split('.');
-    for (var i = 0; i<numbers.length; i++) {
-        if (numbers[i]<required[i]) {
-            return printJqueryError(v);
-        }
-    }
+  }
 })();
 
 function printJqueryError(v) {
-    console.error("DummyEditor needs jQuery "+requestedJquery+", while loaded "+v);
+  console.error("DummyEditor needs jQuery "+requestedJquery+", while loaded "+v);
 }
 
 
 var dummyEditor = {
-    _widgets: [],
-    _module: null,
-    _callbacks: [],
-    _fired: false,
-    _path: '/src'
+  _widgets: [],
+  _module: null,
+  _callbacks: [],
+  _fired: false,
+  _path: '/src'
 };
 
 dummyEditor.setPath = function(path) {
-    dummyEditor._path = path;
+  dummyEditor._path = path;
 }
 
 function __getScripts(scripts, callback) {
-    var progress = 0;
-    $.holdReady(true);
-    for (var i = 0; i<scripts.length; i++) {
-        var script = scripts[i];
-        $.ajax({
-            async: true,
-            //url: "jui/js/jquery-ui-1.8.20.min.js",
-            url: script,
-            dataType: "script"
-        }).done(function() {
-            if (++progress == scripts.length) {
-                $.holdReady(false);
-                callback();
-            }
-        });
-    };
+  var progress = 0;
+  $.holdReady(true);
+  for (var i = 0; i<scripts.length; i++) {
+    var script = scripts[i];
+    $.ajax({
+      async: true,
+      //url: "jui/js/jquery-ui-1.8.20.min.js",
+      url: script,
+      dataType: "script"
+    }).done(function() {
+      if (++progress == scripts.length) {
+        $.holdReady(false);
+        callback();
+      }
+    });
+  };
 }
 
 dummyEditor.addWidget = function(widget) {
@@ -67,55 +67,56 @@ dummyEditor.addWidget = function(widget) {
 }
 
 dummyEditor.getWidget = function(type) {
-    for (var i = 0; i<dummyEditor._widgets.length; i++) {
-        if (dummyEditor._widgets[i].template.type === type) {
-            return dummyEditor._widgets[i];
-        }
+  for (var i = 0; i<dummyEditor._widgets.length; i++) {
+    if (dummyEditor._widgets[i].template.type === type) {
+      return dummyEditor._widgets[i];
     }
-    return null;
+  }
+  return null;
 }
 
 dummyEditor.addListener = function(cb) {
-    if (!cb) return;
-    if (dummyEditor._fired) {
-        return cb(dummyEditor._module);
-    }
-    dummyEditor._callbacks.push(cb);
+  if (!cb) return;
+  if (dummyEditor._fired) {
+    return cb(dummyEditor._module);
+  }
+  dummyEditor._callbacks.push(cb);
 }
 
 dummyEditor.init = function(lang, widgets, cb) {
-    var w = [];
-    w.push(dummyEditor._path+'/angular-drag-and-drop-lists.js');
-    for (var i = 0; i<widgets.length; i++) {
-        if (widgets[i].indexOf("/")==0) {
-            w.push(widgets[i]);
-        } else {
-            w.push(dummyEditor._path+'/widgets/'+widgets[i]+'/'+widgets[i]+'.js');
-        }
+  var w = [];
+  w.push(dummyEditor._path+'/angular-drag-and-drop-lists.js');
+  for (var i = 0; i<widgets.length; i++) {
+    if (widgets[i].indexOf("/")==0) {
+      w.push(widgets[i]);
+    } else {
+      w.push(dummyEditor._path+'/widgets/'+widgets[i]+'/'+widgets[i]+'.js');
     }
-    __getScripts(w, function() {
-        dummyEditor.__performInit(lang, cb);
-    });
+  }
+  __getScripts(w, function() {
+    dummyEditor.__performInit(lang, cb);
+  });
 }
 
 dummyEditor.__performInit = function(lang, cb) {
-    if (!lang) lang = "en";
-    var dependencies = [];
-    dependencies.push("pascalprecht.translate");
-    dependencies.push("dndLists");
+  if (!lang) lang = "en";
+  var dependencies = [];
+  dependencies.push("pascalprecht.translate");
+  dependencies.push("dndLists");
 
-    for (var i = 0; i<dummyEditor._widgets.length; i++) {
-        var w = dummyEditor._widgets[i];
-        if (w.dependencies && w.dependencies.length>0) {
-            for (var k = 0; k<w.dependencies.length; k++) {
-                dependencies.push(w.dependencies[k]);
-            }
-        }
+  for (var i = 0; i<dummyEditor._widgets.length; i++) {
+    var w = dummyEditor._widgets[i];
+    if (w.dependencies && w.dependencies.length>0) {
+      for (var k = 0; k<w.dependencies.length; k++) {
+        dependencies.push(w.dependencies[k]);
+      }
     }
+  }
 
-    dummyEditor._module = angular.module("dummyEditor", dependencies);
+  dummyEditor._module = angular.module("dummyEditor", dependencies);
 
 
+<<<<<<< Updated upstream
     dummyEditor._module.config(['$translateProvider', function($translateProvider) {
         var files = {
             files: []
@@ -147,7 +148,7 @@ dummyEditor.__performInit = function(lang, cb) {
                 valueName: "@"
             },
             require: "ngModel",
-            templateUrl: dummyEditor._path+'/autocomplete-selector.html',
+            templateUrl: dummyEditor._path+'/templates/autocomplete-selector.html',
             link: function(scope, iElement, iAttrs, ngModelCtrl) {
                 var canOpen = false;
                 ngModelCtrl.$render = function() {
@@ -200,192 +201,207 @@ dummyEditor.__performInit = function(lang, cb) {
         }
     });
 
-    dummyEditor._module.directive("dummyEditor", function() {
-        return {
-            restrict: 'AE',
-            scope: {
-                ngModel: "=",
-                customCss: "="
-            },
-            templateUrl: dummyEditor._path+'/dummy-editor.html'
-        }
 
-    });
+  dummyEditor._module.directive("colorpicker", function($timeout) {
+    return {
+      restrict: 'AE',
+      scope: {
+        id: "@",
+        colorvalue: "=",
+        placeholder: "@"
+      },
+      require: 'ngModel',
+      templateUrl: dummyEditor._path+'/templates/colorpicker.html',
+      link: function(scope, iElement, iAttrs, ngModelCtrl) {
 
-    dummyEditor._module.controller("NestedListsDemoController", function($scope, $translate, $http, $timeout) {
+        ngModelCtrl.$formatters.push(function(modelValue) {
+             return modelValue
+         });
 
-        $scope.getWidget = function(type) {
-            return dummyEditor.getWidget(type);
-        }
+        scope.$watch('ngModel', function() {
+              console.log("changing ngmodel ctrl", scope.ngModel)
+              ngModelCtrl.$setViewValue(scope.ngModel);
+          });
+          ngModelCtrl.$parsers.push(function(viewValue) {
+             return viewValue;
+         });
+           ngModelCtrl.$render = function() {
+             scope.ngModel = ngModelCtrl.$viewValue;
+           }
 
-
-
-        $scope.baseId = 1;
-        /**
-         * If I reuse a model, I need to find the first valid id. Thus, I need
-         * to itarate over the model, recurservly (is an element is a container) */
-        $scope.getValidId = function(arr) {
-            for (var i = 0; i<arr.length; i++) {
-                if (arr[i].id) {
-                    if (arr[i].id>=$scope.baseId) {
-                        $scope.baseId = arr[i].id+1;
-                    }
-                    if (arr[i].isContainer) {
-                        $scope.getValidId(arr[i].columns[0]);
-                    }
+        $timeout(function(){
+          $(document).ready( function() {
+            console.log("id colorpicker", scope.id);
+            $('input#'+scope.id).minicolors({
+              control: 'rgb',
+              defaultValue:  '',
+              format: 'rgb',
+              inline: false,
+              letterCase: 'lowercase',
+              opacity: true,
+              position:  'bottom right',
+              swatches: [],
+              change: function(value, opacity) {
+                if( !value ) return;
+                if( opacity ) value += ', ' + opacity;
+                if( typeof console === 'object' ) {
+                  console.log(value);
                 }
-            }
+              },
+              theme: 'bootstrap'
+            });
+          });
+        },0);
+      }
+    }
+  });
+
+
+
+  dummyEditor._module.directive("dummyEditor", function() {
+    return {
+      restrict: 'AE',
+      scope: {
+        ngModel: "=",
+        customCss: "="
+      },
+      templateUrl: dummyEditor._path+'/dummy-editor.html'
+    }
+
+  });
+
+  dummyEditor._module.controller("NestedListsDemoController", function($scope, $translate, $http, $timeout) {
+
+    $scope.getWidget = function(type) {
+      return dummyEditor.getWidget(type);
+    }
+
+
+
+    $scope.baseId = 1;
+    /**
+    * If I reuse a model, I need to find the first valid id. Thus, I need
+    * to itarate over the model, recurservly (is an element is a container) */
+    $scope.getValidId = function(arr) {
+      for (var i = 0; i<arr.length; i++) {
+        if (arr[i].id) {
+          if (arr[i].id>=$scope.baseId) {
+            $scope.baseId = arr[i].id+1;
+          }
+          if (arr[i].isContainer) {
+            $scope.getValidId(arr[i].columns[0]);
+          }
         }
-        $scope.hovers = {};
+      }
+    }
+    $scope.hovers = {};
 
-        $scope.mouseEnter = function(item) {
-            $scope.hovers[item.id] = true;
+    $scope.mouseEnter = function(item) {
+      $scope.hovers[item.id] = true;
+    }
+    $scope.mouseExit = function(item) {
+      $scope.hovers[item.id] = false;
+    }
+    $scope.isHover = function(item) {
+      return $scope.hovers[item.id];
+    }
+
+    $scope.getId = function() {
+      var i = $scope.baseId;
+      $scope.baseId++;
+      return i;
+    }
+
+    $scope.copyId = function(item) {
+      item.id = $scope.getId();
+    }
+
+    $scope.baseUrl = dummyEditor._path+'/widgets/';
+
+    $scope.models = {
+      selected: null,
+      templates: [],
+      containers: [],
+      elements: [],
+      dropzones: {
+        "A": []
+      }
+    };
+    if ($scope.ngModel) {
+      if (!$.isArray($scope.ngModel)) {
+        console.error("the dummy-editor model must be an array!");
+      } else {
+        $scope.models.dropzones["A"] = $scope.ngModel;
+        $scope.getValidId($scope.ngModel);
+      }
+    }
+
+    var toTranslate = [];
+    for (var i = 0; i<dummyEditor._widgets.length; i++) {
+      $scope.models.templates.push(dummyEditor._widgets[i].template);
+      if (dummyEditor._widgets[i].template.isContainer) {
+        $scope.models.containers.push(dummyEditor._widgets[i].template);
+      } else {
+        $scope.models.elements.push(dummyEditor._widgets[i].template);
+      }
+      toTranslate.push(dummyEditor._widgets[i].name);
+    }
+
+    $scope.add = function(item) {
+      var c = angular.copy(item);
+      c.id = $scope.getId();
+      $scope.models.dropzones.A.push(c);
+    }
+
+    $scope.performMove = function(list, index) {
+      list.splice(index, 1);
+    }
+    $scope.addedElement = function(item, list) {
+      if (list) {
+        console.log("The element "+item.id+" has been added to the list "+list.id);
+        item._father = list.id;
+      }
+      else {
+        console.log("The element "+item.id+" has moved to root");
+        item._father = null;
+      }
+    }
+    $scope.getItemFromId = function(id) {
+      return $scope.getItemFromIdInternal($scope.models.dropzones.A, id);
+    }
+    $scope.getItemFromIdInternal = function(list, id) {
+      for (var i = 0; i<list.length; i++) {
+        if (list[i].id == id) return list[i];
+        if (list[i].isContainer) {
+          var tmp = $scope.getItemFromIdInternal(list[i], id);
+          if (tmp) return tmp;
         }
-        $scope.mouseExit = function(item) {
-            $scope.hovers[item.id] = false;
-        }
-        $scope.isHover = function(item) {
-            return $scope.hovers[item.id];
-        }
-
-        $scope.getId = function() {
-            var i = $scope.baseId;
-            $scope.baseId++;
-            return i;
-        }
-
-        $scope.copyId = function(item) {
-            item.id = $scope.getId();
-        }
-
-        $scope.baseUrl = dummyEditor._path+'/widgets/';
-
-        $scope.models = {
-            selected: null,
-            templates: [],
-            containers: [],
-            elements: [],
-            dropzones: {
-                "A": []
-            }
-        };
-        if ($scope.ngModel) {
-            if (!$.isArray($scope.ngModel)) {
-                console.error("the dummy-editor model must be an array!");
-            } else {
-                $scope.models.dropzones["A"] = $scope.ngModel;
-                $scope.getValidId($scope.ngModel);
-            }
-        }
-
-        var toTranslate = [];
-        for (var i = 0; i<dummyEditor._widgets.length; i++) {
-            $scope.models.templates.push(dummyEditor._widgets[i].template);
-            if (dummyEditor._widgets[i].template.isContainer) {
-                $scope.models.containers.push(dummyEditor._widgets[i].template);
-            } else {
-                $scope.models.elements.push(dummyEditor._widgets[i].template);
-            }
-            toTranslate.push(dummyEditor._widgets[i].name);
-        }
-
-        $scope.add = function(item) {
-            var c = angular.copy(item);
-            c.id = $scope.getId();
-            $scope.models.dropzones.A.push(c);
-        }
-
-        $scope.performMove = function(list, index) {
-            list.splice(index, 1);
-        }
-        $scope.addedElement = function(item, list) {
-            if (list) {
-                console.log("The element "+item.id+" has been added to the list "+list.id);
-                item._father = list.id;
-            }
-            else {
-                console.log("The element "+item.id+" has moved to root");
-                item._father = null;
-            }
-        }
-        $scope.getItemFromId = function(id) {
-            return $scope.getItemFromIdInternal($scope.models.dropzones.A, id);
-        }
-        $scope.getItemFromIdInternal = function(list, id) {
-            for (var i = 0; i<list.length; i++) {
-                if (list[i].id == id) return list[i];
-                if (list[i].isContainer) {
-                    var tmp = $scope.getItemFromIdInternal(list[i], id);
-                    if (tmp) return tmp;
-                }
-            }
-            return null;
-        }
+      }
+      return null;
+    }
 
 
-        $scope.generateHtml = function() {
-            var data = $scope.models.dropzones.A;
-            var allHtml = "";
-            var allCss = $scope.customCss+"\n";
-            var index = -1;
-            for (var i = 0; i<data.length; i++) {
-                if (!data[i].customClassesPrintable) data[i].customClassesPrintable = ""
-                var f = dummyEditor.getWidget(data[i].type).generateCode;
-                var out = f(data[i]);
-                allHtml += out.html+"\n";
-                allCss += out.css+"\n";
-            }
-            return {
-                html: allHtml,
-                css: allCss
-            }
-        }
+    $scope.generateHtml = function() {
+      var data = $scope.models.dropzones.A;
+      var allHtml = "";
+      var allCss = $scope.customCss+"\n";
+      var index = -1;
+      for (var i = 0; i<data.length; i++) {
+        if (!data[i].customClassesPrintable) data[i].customClassesPrintable = ""
+        var f = dummyEditor.getWidget(data[i].type).generateCode;
+        var out = f(data[i]);
+        allHtml += out.html+"\n";
+        allCss += out.css+"\n";
+      }
+      return {
+        html: allHtml,
+        css: allCss
+      }
+    }
 
-        dummyEditor.generateHtml = function() {
-            return $scope.generateHtml();
-        }
-
-        /*var mousePosition;
-        var offset = [0,0];
-        var div;
-        var isDown = false;
-        var div = document.getElementById("dxy");
-        var move = document.getElementById("move");
-        var move2 = document.getElementById("move2");
-        move.addEventListener('mousedown', function(e) {
-            isDown = true;
-            offset = [
-                div.offsetLeft - e.clientX,
-                div.offsetTop - e.clientY
-            ];
-        }, true);
-        move2.addEventListener('mousedown', function(e) {
-            isDown = true;
-            offset = [
-                div.offsetLeft - e.clientX,
-                div.offsetTop - e.clientY
-            ];
-        }, true);
-
-        document.addEventListener('mouseup', function() {
-            isDown = false;
-        }, true);
-
-        document.addEventListener('mousemove', function(event) {
-            //event.preventDefault();
-            if (isDown) {
-                mousePosition = {
-
-                    x : event.clientX,
-                    y : event.clientY
-
-                };
-                div.style.left = (mousePosition.x + offset[0]) + 'px';
-                div.style.top  = (mousePosition.y + offset[1]) + 'px';
-            }
-        }, true);*/
-
-
+    dummyEditor.generateHtml = function() {
+      return $scope.generateHtml();
+    }
         $scope.cssCustomClasses = [];
         var customClassExample = {
             selector: "div .classname",
@@ -462,7 +478,7 @@ dummyEditor.__performInit = function(lang, cb) {
         }
         $scope.cssGenerateAvailableClasses();
         $scope.generateCustomCss = function() {
-            $scope.customCss = "";
+            $scope.customCss = "/*trick to avoid margin collapsing*/ \n * {padding: 0.0156249996px;}";
             for (var i = 0; i<$scope.cssCustomClasses.length; i++) {
                 var c = $scope.cssCustomClasses[i];
                 $scope.customCss += c.selector + " {\n";
@@ -473,142 +489,140 @@ dummyEditor.__performInit = function(lang, cb) {
             }
         }
         $scope.generateCustomCss();
-
-
-    });
+});
 
 
 
 
-    dummyEditor._module.directive("elementInfo", function() {
-        return {
-            restrict: 'E',
-            templateUrl: dummyEditor._path+'/element-info.html'
-        }
-    });
+dummyEditor._module.directive("elementInfo", function() {
+  return {
+    restrict: 'E',
+    templateUrl: dummyEditor._path+'/element-info.html'
+  }
+});
 
 
-    dummyEditor._module.controller("elementInfoController", function($scope, $timeout) {
+dummyEditor._module.controller("elementInfoController", function($scope, $timeout) {
 
-        $scope.init = false;
-        $scope.openSettings = function() {
-            $scope.backup = angular.toJson($scope.item);
-            $scope._item = angular.fromJson($scope.backup);
-            if (!$scope.init) {
-                $("#settings-"+$scope.item.id).on('hidden.bs.modal', function() {
-                    $timeout(function() {
-                        if ($scope.backup) {
-                            var tmp = angular.fromJson($scope.backup);
-                            for (var key in tmp) {
-                                $scope.item[key] = tmp[key];
-                            }
-                            delete $scope.backup;
-                        }
-                    },100);
-                });
-                $scope.init = true;
+  $scope.init = false;
+  $scope.openSettings = function() {
+    $scope.backup = angular.toJson($scope.item);
+    $scope._item = angular.fromJson($scope.backup);
+    if (!$scope.init) {
+      $("#settings-"+$scope.item.id).on('hidden.bs.modal', function() {
+        $timeout(function() {
+          if ($scope.backup) {
+            var tmp = angular.fromJson($scope.backup);
+            for (var key in tmp) {
+              $scope.item[key] = tmp[key];
             }
-            $("#settings-"+$scope.item.id).modal();
-        }
-
-        $scope.saveSettings = function() {
             delete $scope.backup;
-            $scope.item.customClassesPrintable = "";
-            for (var i = 0; i<$scope.item.customClasses.length; i++) {
-                $scope.item.customClassesPrintable += $scope.item.customClasses[i].substring(1)+" ";
-            }
-            var f = dummyEditor.getWidget($scope.item.type).saveSettings;
-            if (f) {
-                f($scope.item);
-            }
-        }
-
-
-
-        $scope.recSearch = function(obj, target) {
-            if ($.isArray(obj)) {
-                var found = -1;
-                for (var i = 0; i<obj.length; i++) {
-                    if (obj[i] === target) {
-                        found = i;
-                    }
-                    if (found != -1) {
-                        obj.splice(found, 1);
-                        return found;
-                    }
-                    found = $scope.recSearch(obj[i], target);
-                    if (found != -1) break;
-                }
-                if (found != -1) return found;
-                return -1;
-            }
-            if (typeof obj === 'object') {
-                for (var k in obj) {
-                    if (typeof obj[k] === 'object') {
-                        var found = $scope.recSearch(obj[k], target);
-                        if (found != -1) return found;
-                    }
-                }
-            }
-            return -1;
-        }
-
-        $scope.deleteElement = function($event) {
-            $timeout(function() {
-                var found = $scope.recSearch($scope.models.dropzones.A, $scope.item);
-                /*for (var i = 0; i<$scope.models.dropzones.A.length; i++) {
-                    if ($scope.models.dropzones.A[i] === $scope.item) {
-                        found = i;
-                        break;
-                    }
-                }
-                if (found != -1) {
-                    $timeout(function() {
-                        $scope.models.dropzones.A.splice(found, 1);
-                    }, 200);
-                }*/
-            }, 200);
-        }
-
-        $scope.addCustomClass = function(c) {
-            $scope.item.customClasses.push(c);
-        }
-        $scope.removeCustomClass = function(index) {
-            $scope.item.customClasses.splice(index, 1);
-        }
-
-        $scope.calculateLeft = function(item) {
-            if (item.isContainer) {
-                //I need to calculate the number of fathers
-                var father = item._father;
-                if (!father) return "5px";
-                var number = $scope.computeNumberOfFathers(item, 0);
-                number = number * 150;
-                return number+"px";
-            }
-            return "initial";
-        }
-
-        $scope.computeNumberOfFathers = function(item, c) {
-            if (!item) return c;
-            if (!item._father) return c;
-            var f = $scope.getItemFromId(item._father);
-            c++;
-            return $scope.computeNumberOfFathers(f, c);
-        }
-    })
-
-    dummyEditor._module.filter('trust', ['$sce',function($sce) {
-      return function(value, type) {
-        return $sce.trustAs(type || 'html', value);
-      }
-    }]);
-
-    dummyEditor._fired = true;
-    for (var i = 0; i<dummyEditor._callbacks.length; i++) {
-        dummyEditor._callbacks[i](dummyEditor._module);
+          }
+        },100);
+      });
+      $scope.init = true;
     }
-    console.log("DummyEditor Loaded");
-    if (cb) cb();
+    $("#settings-"+$scope.item.id).modal();
+  }
+
+  $scope.saveSettings = function() {
+    delete $scope.backup;
+    $scope.item.customClassesPrintable = "";
+    for (var i = 0; i<$scope.item.customClasses.length; i++) {
+      $scope.item.customClassesPrintable += $scope.item.customClasses[i].substring(1)+" ";
+    }
+    var f = dummyEditor.getWidget($scope.item.type).saveSettings;
+    if (f) {
+      f($scope.item);
+    }
+  }
+
+
+
+  $scope.recSearch = function(obj, target) {
+    if ($.isArray(obj)) {
+      var found = -1;
+      for (var i = 0; i<obj.length; i++) {
+        if (obj[i] === target) {
+          found = i;
+        }
+        if (found != -1) {
+          obj.splice(found, 1);
+          return found;
+        }
+        found = $scope.recSearch(obj[i], target);
+        if (found != -1) break;
+      }
+      if (found != -1) return found;
+      return -1;
+    }
+    if (typeof obj === 'object') {
+      for (var k in obj) {
+        if (typeof obj[k] === 'object') {
+          var found = $scope.recSearch(obj[k], target);
+          if (found != -1) return found;
+        }
+      }
+    }
+    return -1;
+  }
+
+  $scope.deleteElement = function($event) {
+    $timeout(function() {
+      var found = $scope.recSearch($scope.models.dropzones.A, $scope.item);
+      /*for (var i = 0; i<$scope.models.dropzones.A.length; i++) {
+      if ($scope.models.dropzones.A[i] === $scope.item) {
+      found = i;
+      break;
+    }
+  }
+  if (found != -1) {
+  $timeout(function() {
+  $scope.models.dropzones.A.splice(found, 1);
+}, 200);
+}*/
+}, 200);
+}
+
+$scope.addCustomClass = function(c) {
+  $scope.item.customClasses.push(c);
+}
+$scope.removeCustomClass = function(index) {
+  $scope.item.customClasses.splice(index, 1);
+}
+
+$scope.calculateLeft = function(item) {
+  if (item.isContainer) {
+    //I need to calculate the number of fathers
+    var father = item._father;
+    if (!father) return "5px";
+    var number = $scope.computeNumberOfFathers(item, 0);
+    number = number * 150;
+    return number+"px";
+  }
+  return "initial";
+}
+
+$scope.computeNumberOfFathers = function(item, c) {
+  if (!item) return c;
+  if (!item._father) return c;
+  var f = $scope.getItemFromId(item._father);
+  c++;
+  return $scope.computeNumberOfFathers(f, c);
+}
+})
+
+dummyEditor._module.filter('trust', ['$sce',function($sce) {
+  return function(value, type) {
+    return $sce.trustAs(type || 'html', value);
+  }
+}]);
+
+dummyEditor._fired = true;
+for (var i = 0; i<dummyEditor._callbacks.length; i++) {
+  dummyEditor._callbacks[i](dummyEditor._module);
+}
+console.log("DummyEditor Loaded");
+if (cb) cb();
 
 };
