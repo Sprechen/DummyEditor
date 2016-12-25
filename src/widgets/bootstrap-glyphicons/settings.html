@@ -8,11 +8,7 @@
     </div>
     <div class="dummy-editor-form-group">
         <label for="iconcolor">{{'boostrapglyphicons.color' | translate}}:</label>
-        <div class="input-group">
-          <div class="input-group-addon">#</div>
-          <input type="text" class="dummy-editor-form-control" id="iconcolor" placeholder="{{'boostrapglyphicons.color' | translate }}" ng-model="item.color">
-          <div class="input-group-addon" style="background: #{{item.color}}; width: 40px;"></div>
-        </div>
+        <colorpicker id="iconcolor" placeholder="{{'boostrapglyphicons.color' | translate }}" ng-model="item.color"></colorpicker>
     </div>
     <div class="dummy-editor-form-group">
         <label for="size">{{'boostrapglyphicons.size' | translate}}:</label>

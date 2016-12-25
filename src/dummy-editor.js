@@ -566,8 +566,6 @@
                 $scope._item = angular.fromJson($scope.backup);
                 $scope.selectedItem.item = $scope.item;
                 $("#settings-popup").on('hidden.bs.modal', function(e) {
-                    console.log("modal closed");
-                    console.log(e);
                     $timeout(function() {
                         if ($scope.selectedItem.backup) {
                             var tmp = angular.fromJson($scope.selectedItem.backup);
