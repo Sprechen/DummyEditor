@@ -1,16 +1,16 @@
-<form ng-controller="navbarSettingsController">
+<form ng-controller="navbarSettingsController" ng-init="selected='brand'">
 
-    <ul class="nav nav-tabs" role="tablist">
+    <ul id="navbar-settings" class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
-            <a href="#brand" aria-controls="brand" role="tab" data-toggle="tab">{{'navbar.tab-brand' | translate}}</a>
+            <a href="#brand" ng-click="selected='brand'" aria-controls="brand" role="tab" data-toggle="tab">{{'navbar.tab-brand' | translate}}</a>
         </li>
         <li role="presentation">
-            <a href="#menu" aria-controls="menu" role="tab" data-toggle="tab">{{'navbar.tab-menu' | translate}}</a>
+            <a id="menu" href="#menu" ng-click="selected='menu'" aria-controls="menu" role="tab" data-toggle="tab">{{'navbar.tab-menu' | translate}}</a>
         </li>
     </ul>
 
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="brand" style="margin-top:10px;">
+        <div role="tabpanel" class="tab-pane" ng-class="selected=='brand'?'active':''" id="brand" style="margin-top:10px;">
 
             <div class="dummy-editor-form-group">
                 <label for="navbarstyle">{{ 'navbar.style' | translate}}:</label>
@@ -45,7 +45,7 @@
 
 
         </div>
-        <div role="tabpanel" class="tab-pane" id="menu" style="margin-top:10px;">
+        <div role="tabpanel" class="tab-pane" ng-class="selected=='menu'?'active':''" id="menu" style="margin-top:10px;">
 
             <div class="checkbox">
                 <label for="menustyle">
@@ -152,5 +152,11 @@
 
         </div>
     </div>
+    <script>
+    $('#navbar-settings a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+    </script>
 
 </form>

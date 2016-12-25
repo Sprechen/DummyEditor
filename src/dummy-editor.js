@@ -32,7 +32,7 @@
         _module: null,
         _callbacks: [],
         _fired: false,
-        _path: '/src'
+        _path: '/src',
     };
     window.dummyEditor = dummyEditor;
 
@@ -269,7 +269,7 @@
         });
 
         dummyEditor._module.controller("NestedListsDemoController", function($scope, $translate, $http, $timeout) {
-
+            $scope.selectedItem = {};
             $scope.getWidget = function(type) {
                 return dummyEditor.getWidget(type);
             };
@@ -356,21 +356,20 @@
             };
             $scope.addedElement = function(item, list) {
                 if (list) {
-                    console.log("The element " + item.id + " has been added to the list " + list.id);
                     item._father = list.id;
                 } else {
-                    console.log("The element " + item.id + " has moved to root");
                     item._father = null;
                 }
             };
             $scope.getItemFromId = function(id) {
+                id = Number(id);
                 return $scope.getItemFromIdInternal($scope.models.dropzones.A, id);
             };
             $scope.getItemFromIdInternal = function(list, id) {
                 for (var i = 0; i < list.length; i++) {
                     if (list[i].id == id) return list[i];
                     if (list[i].isContainer) {
-                        var tmp = $scope.getItemFromIdInternal(list[i], id);
+                        var tmp = $scope.getItemFromIdInternal(list[i].columns[0], id);
                         if (tmp) return tmp;
                     }
                 }
@@ -476,7 +475,7 @@
             };
             $scope.cssGenerateAvailableClasses();
             $scope.generateCustomCss = function() {
-                $scope.customCss = "/*trick to avoid margin collapsing*/ \n * {padding: 0.0156249996px;}";
+                $scope.customCss = "/*trick to avoid margin collapsing*/\n* {\npadding: 0.0156249996px;\n}\n";
                 for (var i = 0; i < $scope.cssCustomClasses.length; i++) {
                     var c = $scope.cssCustomClasses[i];
                     $scope.customCss += c.selector + " {\n";
@@ -495,36 +494,17 @@
         dummyEditor._module.directive("elementInfo", function() {
             return {
                 restrict: 'E',
-                templateUrl: dummyEditor._path + '/element-info.html'
+                templateUrl: dummyEditor._path + '/templates/element-info.html'
             };
         });
 
-
-        dummyEditor._module.controller("elementInfoController", function($scope, $timeout) {
-
-            $scope.init = false;
-            $scope.openSettings = function() {
-                $scope.backup = angular.toJson($scope.item);
-                $scope._item = angular.fromJson($scope.backup);
-                if (!$scope.init) {
-                    $("#settings-" + $scope.item.id).on('hidden.bs.modal', function() {
-                        $timeout(function() {
-                            if ($scope.backup) {
-                                var tmp = angular.fromJson($scope.backup);
-                                for (var key in tmp) {
-                                    $scope.item[key] = tmp[key];
-                                }
-                                delete $scope.backup;
-                            }
-                        }, 100);
-                    });
-                    $scope.init = true;
-                }
-                $("#settings-" + $scope.item.id).modal();
-            };
+        dummyEditor._module.controller("elementInfoControllerPopup", function($scope, $timeout) {
+            $scope.$watch('selectedItem', function(newValue, oldValue) {
+                $scope.item = $scope.selectedItem.item;
+            }, true);
 
             $scope.saveSettings = function() {
-                delete $scope.backup;
+                delete $scope.selectedItem.backup;
                 $scope.item.customClassesPrintable = "";
                 for (var i = 0; i < $scope.item.customClasses.length; i++) {
                     $scope.item.customClassesPrintable += $scope.item.customClasses[i].substring(1) + " ";
@@ -534,8 +514,6 @@
                     f($scope.item);
                 }
             };
-
-
 
             $scope.recSearch = function(obj, target) {
                 var found = -1;
@@ -577,6 +555,33 @@
             $scope.removeCustomClass = function(index) {
                 $scope.item.customClasses.splice(index, 1);
             };
+        });
+
+
+        dummyEditor._module.controller("elementInfoController", function($scope, $timeout) {
+
+            $scope.init = false;
+            $scope.openSettings = function() {
+                $scope.selectedItem.backup = angular.toJson($scope.item);
+                $scope._item = angular.fromJson($scope.backup);
+                $scope.selectedItem.item = $scope.item;
+                $("#settings-popup").on('hidden.bs.modal', function(e) {
+                    console.log("modal closed");
+                    console.log(e);
+                    $timeout(function() {
+                        if ($scope.selectedItem.backup) {
+                            var tmp = angular.fromJson($scope.selectedItem.backup);
+                            for (var key in tmp) {
+                                $scope.item[key] = tmp[key];
+                            }
+                            delete $scope.selectedItem.backup;
+                            delete $scope.selectedItem.item;
+                        }
+                    }, 100);
+                    $(e.currentTarget).unbind();
+                });
+                $("#settings-popup").modal();
+            };
 
             $scope.calculateLeft = function(item) {
                 if (item.isContainer) {
@@ -584,7 +589,7 @@
                     var father = item._father;
                     if (!father) return "5px";
                     var number = $scope.computeNumberOfFathers(item, 0);
-                    number = number * 150;
+                    number = number * 140;
                     return number + "px";
                 }
                 return "initial";
@@ -592,9 +597,11 @@
 
             $scope.computeNumberOfFathers = function(item, c) {
                 if (!item) return c;
-                if (!item._father) return c;
-                var f = $scope.getItemFromId(item._father);
+                if (!item._father) {
+                    return c;
+                }
                 c++;
+                var f = $scope.getItemFromId(item._father);
                 return $scope.computeNumberOfFathers(f, c);
             };
         });

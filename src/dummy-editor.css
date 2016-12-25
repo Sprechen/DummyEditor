@@ -280,7 +280,7 @@ ul .typehead .dummy-dropdown-menu {
     color: #333333;
 }
 
-.big-modal * {
+.big-modal *:not(.fa .glyphicon) {
     font-family: 'Lato', sans-serif;
 }
 

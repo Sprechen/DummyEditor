@@ -1,0 +1,11 @@
+<div ng-controller="elementInfoController" ng-mouseenter="mouseEnter(item)" ng-mouseleave="mouseExit(item)">
+    <div id="settings-label-{{item.id}}" ng-class="item.isContainer ? 'display-info-container' : 'display-info'" style="left: {{calculateLeft(item)}};" ng-show="isHover(item)">
+        <a href="#" ng-click="openSettings()">
+            <span style="vertical-align: super; font-size:14px;">
+                {{getWidget(item.type).name | translate}}
+            </span>
+            <i class="icon-cog glyphicon-big"></i>
+        </a>
+    </div>
+
+</div>
