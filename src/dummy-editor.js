@@ -268,7 +268,7 @@
 
         });
 
-        dummyEditor._module.controller("NestedListsDemoController", function($scope, $translate, $http, $timeout) {
+        dummyEditor._module.controller("DummyEditorController", function($scope, $translate, $http, $timeout) {
             $scope.selectedItem = {};
             $scope.getWidget = function(type) {
                 return dummyEditor.getWidget(type);

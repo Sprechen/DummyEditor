@@ -7,6 +7,10 @@
     min-height: 40px;
 }
 
+.dummy-editor a:hover {
+    cursor: pointer;
+}
+
 /**
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
@@ -46,10 +50,11 @@
     -webkit-box-sizing: border-box;
     display: block;
     padding: 0px;
+    border: 2px solid transparent;
 }
 
 .dummy-editor .dropzone .dropli:hover {
-    border: 2px solid rgba(247,163, 236, 0.7);
+    border-color: rgba(247,163, 236, 0.7);
     background: rgba(221,221,221,0.2);
 }
 
@@ -93,7 +98,9 @@
     position: relative;
 }
 
-
+.dummy-editor .dummy-container {
+    
+}
 
 
 /***************************** Element Selection *****************************/
@@ -214,7 +221,7 @@
     font-family: 'Lato', sans-serif;
     border-color: transparent;
     min-height: 70px;
-    height: 70px !important;
+    /*height: 70px !important;*/
     padding-top: 10px;
     margin-bottom: 0px;
     bottom: 0;
@@ -237,6 +244,7 @@
 
 .dummy-editor .dummy-bar .dummy-element {
     color: white;
+    cursor: pointer;
 }
 
 .dummy-editor .dummy-bar .dndDragover {
@@ -291,201 +299,24 @@ ul .typehead .dummy-dropdown-menu {
     }
 }
 
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 100%;
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 12.8px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #ac51b5;
-  border-radius: 25px;
-  border: 0px solid #000101;
-}
-input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 0px solid #000000;
-  height: 20px;
-  width: 39px;
-  border-radius: 7px;
-  background: #65001c;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -3.6px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #ac51b5;
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 12.8px;
-  cursor: pointer;
-  animate: 0.2s;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  background: #ac51b5;
-  border-radius: 25px;
-  border: 0px solid #000101;
-}
-input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 0px solid #000000;
-  height: 20px;
-  width: 39px;
-  border-radius: 7px;
-  background: #65001c;
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 12.8px;
-  cursor: pointer;
-  animate: 0.2s;
-  background: transparent;
-  border-color: transparent;
-  border-width: 39px 0;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: #ac51b5;
-  border: 0px solid #000101;
-  border-radius: 50px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-}
-input[type=range]::-ms-fill-upper {
-  background: #ac51b5;
-  border: 0px solid #000101;
-  border-radius: 50px;
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-}
-input[type=range]::-ms-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 0px solid #000000;
-  height: 20px;
-  width: 39px;
-  border-radius: 7px;
-  background: #65001c;
-  cursor: pointer;
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: #ac51b5;
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #ac51b5;
-}
-/*
-.dummy-range {
-    display: table;
+
+.dummy-editor-checkbox {
+    padding-left: 3px;
     position: relative;
-    height: 25px;
-    margin-top: 20px;
-    background-color: rgb(245, 245, 245);
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-
-.dummy-range input[type="range"] {
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    -ms-appearance: none !important;
-    -o-appearance: none !important;
-    appearance: none !important;
-
-    display: table-cell;
-    width: 100%;
-    background-color: transparent;
-    height: 25px;
-    cursor: pointer;
+.dummy-editor-checkbox label {
+  min-height: 20px;
+  padding-left: 5px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
 }
-.dummy-range input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    -ms-appearance: none !important;
-    -o-appearance: none !important;
-    appearance: none !important;
+.dummy-editor-checkbox input[type="checkbox"] {
 
-    width: 11px;
-    height: 25px;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0px;
-    background-color: rgb(153, 153, 153);
 }
-
-.dummy-range input[type="range"]::-moz-slider-thumb {
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    -ms-appearance: none !important;
-    -o-appearance: none !important;
-    appearance: none !important;
-
-    width: 11px;
-    height: 25px;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0px;
-    background-color: rgb(153, 153, 153);
-}
-
-.dummy-range output {
-    display: table-cell;
-    padding: 3px 5px 2px;
-    min-width: 40px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(153, 153, 153);
-    text-align: center;
-    text-decoration: none;
-    border-radius: 4px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    width: 1%;
-    white-space: nowrap;
-    vertical-align: middle;
-
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: -moz-none;
-    -o-user-select: none;
-    user-select: none;
-}
-.dummy-range input[type="range"] {
-    outline: none;
-}
-
-.dummy-range.range-primary input[type="range"]::-webkit-slider-thumb {
-    background-color: rgb(66, 139, 202);
-}
-.dummy-range.range-primary input[type="range"]::-moz-slider-thumb {
-    background-color: rgb(66, 139, 202);
-}
-.dummy-range.range-primary output {
-    background-color: rgb(66, 139, 202);
-}
-.dummy-range.range-primary input[type="range"] {
-    outline-color: rgb(66, 139, 202);
-}
-*/
-
-
-
 .dummy-editor-form-group {
     margin-bottom: 15px;
     display: block;

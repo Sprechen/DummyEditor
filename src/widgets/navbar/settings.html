@@ -47,7 +47,7 @@
         </div>
         <div role="tabpanel" class="tab-pane" ng-class="selected=='menu'?'active':''" id="menu" style="margin-top:10px;">
 
-            <div class="checkbox">
+            <div class="dummy-editor-checkbox">
                 <label for="menustyle">
                     <input id="menustyle" type="checkbox" ng-model="item.menuRight">
                     {{'navbar.menustyle' | translate}}
@@ -58,10 +58,10 @@
 
                 <div class="col-md-3" style="padding-right: 5px;">
                     <div class="list-group">
-                        <a ng-repeat="element in item.menu track by $index" class="list-group-item" ng-class="element===selectedElement?'active':''" href="#" ng-click="selectElement(element, $index)">
+                        <a ng-repeat="element in item.menu track by $index" class="list-group-item" ng-class="element===selectedElement?'active':''" ng-click="selectElement(element, $index)">
                             {{element.title}}
                         </a>
-                        <a class="list-group-item" href="#" ng-click="addElement()">{{'navbar.add-element' | translate}}
+                        <a class="list-group-item" ng-click="addElement()">{{'navbar.add-element' | translate}}
                             <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                         </a>
                     </div>
@@ -76,13 +76,13 @@
                                         <input type="text" class="form-control" ng-disabled="!selectedElement" ng-model="selectedElement.title" style="width: 300px;">
                                     </div>
                                     <div class="form-group pull-right">
-                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-primary" href="#" ng-click="elementMoveUp(selectedIndex)">
+                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-primary" ng-click="elementMoveUp(selectedIndex)">
                                             <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                                         </a>
-                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-primary" href="#" ng-click="elementMoveDown(selectedIndex)">
+                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-primary" ng-click="elementMoveDown(selectedIndex)">
                                             <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
                                         </a>
-                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-danger" href="#" ng-click="removeElement(selectedIndex)">
+                                        <a ng-disabled="!selectedElement" class="dummy-btn dummy-btn-danger" ng-click="removeElement(selectedIndex)">
                                             <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                                         </a>
                                     </div>
@@ -97,7 +97,7 @@
                                         <input ng-disabled="!selectedElement" id="element-url" type="text" class="dummy-editor-form-control" placeholder="{{'navbar.element-url' | translate}}" ng-model="selectedElement.url">
                                     </div>
 
-                                    <div class="checkbox">
+                                    <div class="dummy-editor-checkbox">
                                         <label for="element-active">
                                             <input ng-disabled="!selectedElement" id="element-active" type="checkbox" ng-model="selectedElement.active">
                                             {{'navbar.element-active' | translate}}
