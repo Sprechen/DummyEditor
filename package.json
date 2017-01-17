@@ -1,6 +1,6 @@
 {
   "name": "dummyeditor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "DummyEditor is an AngularJS directive that allows you to create bootstrap based web pages",
   "keywords": [
     "DummyEditor",
